@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
-from .forms import ContactForm, LoginForm
-from django.contrib.auth import authenticate, login
+from .forms import ContactForm, LoginForm, RegisterForm
+from django.contrib.auth import authenticate, login, get_user_model
 
 def home_page(req):
   return render(req,'home_page.html',{})
@@ -13,7 +13,7 @@ def about_page(req):
 
 
 
-
+#  --------------- LOGIN FORM --------------------
 
 def login_page(req):
   login_form = LoginForm(req.POST or None)
@@ -37,8 +37,24 @@ def login_page(req):
   }
   return render(req,'auth/login.html',context)
 
+
+#  --------------- REGISTER FORM --------------------
+
+User = get_user_model()
 def register_page(req):
-  return render(req,'auth/register.html',{})
+  register_form = RegisterForm(req.POST or None)
+  if register_form.is_valid():
+    username = register_form.cleaned_data.get('username')
+    email = register_form.cleaned_data.get('email')
+    password = register_form.cleaned_data.get('password')
+    new_user = User.objects.create_user(username,email,password)
+    print(new_user)
+    
+    
+  context = {
+    'form' : register_form
+  }
+  return render(req,'auth/register.html',context)
 
 
 
