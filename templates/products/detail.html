@@ -1,5 +1,16 @@
-{{ object.title }}
+
+
+
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+ <h1> {{ object.title }} </h1>
 <br />
 {{ object.description }}
 
 <img src="{{ object.image.url }}" alt='product image' />
+
+{% endblock %}

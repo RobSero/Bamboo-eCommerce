@@ -40,17 +40,20 @@ class ProductSlugDetailView(DetailView):
   template_name = 'products/detail.html'
   queryset = Product.objects.all()
 
-  def get_queryset(self, *args, **kwargs):
-    request = self.request
-    slug = self.kwargs.get('slug')
-    try:
-      instance = Product.objects.filter(slug=slug, active=True)
-    except Product.DoesNotExist:
-      raise Http404('Not Found')
-    except Product.MultipleObjectsReturned:
-      qs = Product.objects.filter(slug=slug)
-      instance = qs.first()
-    return instance
+  def get_object(self, *args, **kwargs):
+        request = self.request
+        slug = self.kwargs.get('slug')
+
+        try:
+            instance = Product.objects.get(slug=slug, active=True)
+        except Product.DoesNotExist:
+            raise Http404("Not found..")
+        except Product.MultipleObjectsReturned:
+            qs = Product.objects.filter(slug=slug, active=True)
+            instance = qs.first()
+        except:
+            raise Http404("Unknown error, please try again")
+        return instance
 
 
 
