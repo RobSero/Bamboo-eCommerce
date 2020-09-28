@@ -45,8 +45,18 @@ class Product(models.Model):
   description = models.TextField()
   price = models.DecimalField(decimal_places=2, max_digits=10, default=0.99)
   image = models.ImageField(upload_to=upload_image_path, null=True, blank=True)
+  image1 = models.ImageField(upload_to=upload_image_path, null=True, blank=True)
+  image2 = models.ImageField(upload_to=upload_image_path, null=True, blank=True)
+  image3 = models.ImageField(upload_to=upload_image_path, null=True, blank=True)
+  image4 = models.ImageField(upload_to=upload_image_path, null=True, blank=True)
   featured = models.BooleanField(default=False)
   active = models.BooleanField(default=True)
+  measurements = models.CharField(max_length=50, default='N/A')
+  material = models.CharField(max_length=50, default='N/A')
+  condition = models.CharField(max_length=50, default='N/A')
+  
+  
+  
   
   objects = ProductManager()
   

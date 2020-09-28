@@ -1,4 +1,43 @@
-<form method="POST"> {%csrf_token %}
-  {{ form }}
-  <button type="submit">Submit</button>
-</form>
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="cooming-soon-box">
+  <div class="soon-gradient">
+     <div class="map"></div>
+     <div class="container">
+        <div class="row">
+           <div class="col-lg-6 col-lg-offset-3">
+              <div class="top-soon clearfix">
+                 
+                 
+              </div>
+              <div class="expand">
+                 <h2>What is on your mind?</h2>
+                 <form method="POST" class="get-form"> {%csrf_token %}
+                  {{ form }}
+                  <br />
+                  <div style='text-align:center; margin-top:10px'>
+                  <button class="btn btn-primary" type='submit' style='position:relative'>Send</button>
+                </div>
+                </form>
+              </div>
+           </div>
+           <div class="col-md-12">
+              <div class="cooming-pc-box wow fadeIn">
+                 <img src="images/cooming-pc.png" alt="" />
+              </div>
+           </div>
+          
+        </div>
+     </div>
+  </div>
+</div>
+
+
+
+
+{% endblock %}
+
+

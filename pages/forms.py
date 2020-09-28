@@ -5,11 +5,17 @@ User = get_user_model()
 
 class ContactForm(forms.Form):
   fullname = forms.CharField(widget=forms.TextInput(attrs={
-    'class': 'form-input', 
-    'placeholder': 'your full name'
-    }))
-  email = forms.EmailField()
-  content = forms.CharField(widget=forms.Textarea())
+    'class': 'form-input form-style-override', 
+    'placeholder': 'Your full name',
+    }), label='')
+  email = forms.EmailField(widget=forms.TextInput(attrs={
+    'class': 'form-input form-style-override', 
+    'placeholder': 'Email'
+    }), label='')
+  content = forms.CharField(widget=forms.TextInput(attrs={
+    'class': 'form-input form-style-override', 
+    'placeholder': 'Message'
+    }), label='')
   
   def clean_email(self):
     email = self.cleaned_data.get('email')
@@ -21,19 +27,36 @@ class ContactForm(forms.Form):
   
   
 class LoginForm(forms.Form):
-  username = forms.CharField()
-  email = forms.EmailField()
-  password = forms.CharField(widget=forms.PasswordInput)
+  username = forms.CharField(widget=forms.TextInput(attrs={
+    'class': 'form-input form-style-override', 
+    'placeholder': 'Message'
+    }), label='')
+  password = forms.CharField(widget=forms.PasswordInput(attrs={
+    'class': 'form-input form-style-override', 
+    'placeholder': 'Password'
+    }), label='')
   
   
   
   
   
 class RegisterForm(forms.Form):
-  username = forms.CharField()
-  email = forms.EmailField()
-  password = forms.CharField(widget=forms.PasswordInput)
-  password2 = forms.CharField(label='Confirm password', widget=forms.PasswordInput)
+  username = forms.CharField(widget=forms.TextInput(attrs={
+    'class': 'form-input form-style-override', 
+    'placeholder': 'Username'
+    }), label='')
+  email = forms.EmailField(widget=forms.EmailInput(attrs={
+    'class': 'form-input form-style-override', 
+    'placeholder': 'Email'
+    }), label='')
+  password = forms.CharField(widget=forms.PasswordInput(attrs={
+    'class': 'form-input form-style-override', 
+    'placeholder': 'Password'
+    }), label='')
+  password2 = forms.CharField(widget=forms.PasswordInput(attrs={
+    'class': 'form-input form-style-override', 
+    'placeholder': 'Confirm Password'
+    }), label='')
   
   
   def clean_username(self):
@@ -45,7 +68,7 @@ class RegisterForm(forms.Form):
   
   
   def clean_email(self):
-    username = self.cleaned_data.get('email')
+    email = self.cleaned_data.get('email')
     find_users = User.objects.filter(email=email)
     if find_users.exists():
       raise forms.ValidationError('email already exists')

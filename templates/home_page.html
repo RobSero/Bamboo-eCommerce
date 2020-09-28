@@ -3,6 +3,180 @@
 
 {% block content %}
 
-  <h1>Test home</h1>
+<div class="page-content-product">
+  <div class="main-product">
+    <div class="container">
+      <div class="row clearfix">
+        <div class="find-box">
+          <h1>Sustainable is the<br>new fashionable</h1>
+          <h4>And it has never been easier.</h4>
+          <div class="product-sh">
+            <div class="col-sm-9">
+              <div class="form-sh">
+                <input type="text" placeholder="Search something you love">
+              </div>
+            </div>
 
-{% endblock %}
+            <div class="col-sm-3">
+              <div class="form-sh"> <a class="btn" href="#">Search</a> </div>
+            </div>
+            <p>Or simply<a href="#"> click here </a> and get inspired!</p>
+          </div>
+        </div>
+      </div>
+      <div class="row clearfix">
+        <div class="col-lg-3 col-sm-6 col-md-3">
+          <a href="{% url 'list' %}">
+            <div class="box-img">
+              <h4>Product</h4>
+              <img src="{% static 'img/1.png' %}" alt="" />
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-3 col-sm-6 col-md-3">
+          <a href="{% url 'list' %}">
+            <div class="box-img">
+              <h4>Product</h4>
+              <img src="{% static 'img/1.png' %}" alt="" />
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-3 col-sm-6 col-md-3">
+          <a href="{% url 'list' %}">
+            <div class="box-img">
+              <h4>Product</h4>
+              <img src="{% static 'img/1.png' %}" alt="" />
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-3 col-sm-6 col-md-3">
+          <a href="{% url 'list' %}">
+            <div class="box-img">
+              <h4>Product</h4>
+              <img src="{% static 'img/1.png' %}" alt="" />
+            </div>
+          </a>
+        </div>
+
+        <div class="categories_link">
+          <a href="#">Browse all categories here</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="cat-main-box">
+  <div class="container">
+    <div class="row panel-row">
+      <div class="col-md-4 col-sm-6 wow fadeIn" data-wow-delay="0.0s">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <img src="{% static 'img/xpann-icon.jpg' %}" class="icon-small" alt="">
+            <h4>“Chamb” Your Business</h4>
+            <p>Grow easily with chamb. Create free account.
+              We help expanding your business easily.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 wow fadeIn" data-wow-delay="0.2s">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <img src="{% static 'img/xpann-icon.jpg' %}" class="icon-small" alt="">
+            <h4>Create and add</h4>
+            <p>Grow easily with chamb. Create free account.
+              We help expanding your business easily.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 wow fadeIn hidden-sm" data-wow-delay="0.4s">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <img src="{% static 'img/xpann-icon.jpg' %}" class="icon-small" alt="">
+            <h4>Get inspired</h4>
+            <p>Grow easily with chamb. Create free account.
+              We help expanding your business easily.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="products_exciting_box">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-6 wow fadeIn" data-wow-delay="0.2s">
+        <div class="exciting_box f_pd">
+          <img src="{% static 'img/xpann-icon.jpg' %}" class="icon-small" alt="" />
+          <h4>Explore <strong>exciting</strong> and exotic products
+            tailored to you.
+          </h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris..
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-6 wow fadeIn" data-wow-delay="0.4s">
+        <div class="exciting_box l_pd">
+          <img src="{% static 'img/xpann-icon.jpg' %}" class="icon-small" alt="" />
+          <h4><strong>List your products on</strong> chamb and grow connections.</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris..
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="start-free-box">
+  <div class="container">
+    <div class="row">
+      <div class="main-start-box">
+        <div class="bg_img_left"><img src="{% static 'img/bg_img1.png' %}" alt="#" /></div>
+        <div class="container">
+          <div class="buyer-box clearfix">
+            <div class="col-md-6 col-sm-6 wow fadeIn" data-wow-delay="0.2s">
+              <div class="left-buyer">
+                <img class="img-responsive" src="{% static 'img/creat_pro.png' %}" alt="#" />
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6 wow fadeIn" data-wow-delay="0.4s">
+              <div class="right-buyer">
+                <h4>buyer</h4>
+                <h2>Empower your factory<br>
+                  <span>With a new lead Channel</span>
+                </h2>
+                <p>Never worry about sales or income ftom outbound
+                  channels. with chamb your store is directly
+                  connected to thousands of interested in your
+                  products.
+                </p>
+                <a href="#">Create a buyer account</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+
+
+
+
+    {% endblock %}

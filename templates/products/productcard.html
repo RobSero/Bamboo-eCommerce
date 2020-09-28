@@ -1,0 +1,27 @@
+{% load static %}
+<div class="col-md-4 col-sm-6">
+  <div class="small-box-c">
+    {% if instance.image %}
+    <div class="small-img-b">
+      
+      <a href='{{ instance.get_absolute_url }}'><img src="{{ instance.image.url }}" alt="#" /></a>
+    </div>
+    {% else %}
+    <div class="small-img-b">
+      <a href='{{ instance.get_absolute_url }}'><img src="{% static 'img/tr1.png' %}" alt="#" /></a>
+    </div>
+    {% endif %}
+    <div class="dit-t clearfix">
+      <div class="left-ti">
+        <h4>{{ instance.title }}</h4>
+        <p>Species: <span>{{ instance.material }}</span></p>
+      </div>
+      <a href='{{ instance.get_absolute_url }}' tabindex="0">£{{ instance.price }}</a>
+    </div>
+    <div class="prod-btn">
+      <a href="#"><i class="fa fa-star" aria-hidden="true"></i> Save to wishlist</a>
+      <a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Like this</a>
+      <p>New</p>
+    </div>
+  </div>
+</div>

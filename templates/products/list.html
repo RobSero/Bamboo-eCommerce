@@ -1,7 +1,105 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block content %}
 
 
-{% for obj in object_list %}
+<!-- MAIN WELCOMING IMAGE -->
+
+<div class="profile-box banner-p">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="profile-b">
+          <img src="{% static 'img/lag-63.png' %}" alt="#" />
+          <div class="dit-p">
+            <div class="col-md-2"></div>
+            <div class="col-md-10">
+              <div class="profile-left-b">
+                <ul>
+                  <li><a href="#">Manufacturer </a></li>
+                  <li><a href="#">Furniture</a></li>
+                  <li><a href="#">Est.2002</a></li>
+                  <li><a href="#">54-100 employees</a></li>
+                </ul>
+              </div>
+              <div class="profile-right-b">
+                <a class="vi-btn" href="#">Visit website</a>
+                <a class="fo-btn" href="#">Follow</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- PRODUCT LIST ITEMS -->
+
+<div class="product-profile-box">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1 col-sm-4 pr">
+      </div>
+      <div class="col-md-10 col-sm-8">
+        <div class="profile-pro-right">
+          <div class="panel with-nav-tabs panel-default">
+            <div class="panel-heading clearfix">
+              <ul class="nav nav-tabs pull-left">
+                <li class="active"><a href="#tab1default" data-toggle="tab">Products <span>321</span></a></li>
+                <li><a href="#tab2default" data-toggle="tab">About</a></li>
+                <li><a href="#tab3default" data-toggle="tab">Contact</a></li>
+              </ul>
+              <ul class="nav nav-tabs pull-right right-t">
+                <li class="dropdown">
+                  <a href="#" data-toggle="dropdown">Sort <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#tab4default" data-toggle="tab">Default 4</a></li>
+                  </ul>
+                </li>
+                <li><a href="#tab5default" data-toggle="tab"><i class="fa fa-sliders" aria-hidden="true"></i> Refine</a>
+                </li>
+              </ul>
+            </div>
+            <div class="panel-body">
+              <div class="tab-content">
+                <div class="tab-pane fade in active" id="tab1default">
+                  <div class="product-box-main row">
+                    {% for obj in object_list %}
+                  {% include 'products/productcard.html' with instance=obj %}
+                  {% endfor %}
+                  </div>
+                </div>
+          
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <h1><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a></h1>
 
-{% endfor %}
+
+
+{% endblock %}

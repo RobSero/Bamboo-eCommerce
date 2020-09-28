@@ -1,9 +1,24 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bamboo</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--fontawesome css-->
+  <link rel="stylesheet" href='{% static "css/font-awesome.min.css" %}'>
+  <!--bootstrap css-->
+  <link rel="stylesheet" href='{% static "css/bootstrap.min.css" %}'>
+  <!--animate css-->
+  <link rel="stylesheet" href='{% static "css/animate-wow.css" %}'>
+  <!--main css-->
+  <link rel="stylesheet" href='{% static "css/style.css" %}'>
+  <link rel="stylesheet" href='{% static "css/bootstrap-select.min.css" %}'>
+  <link rel="stylesheet" href='{% static "css/slick.min.css" %}'>
+  <!--responsive css-->
+  <link rel="stylesheet" href='{% static "css/responsive.css" %}'>
+  <link rel="stylesheet" href='{% static "css/overrides.css" %}'>
 </head>
 <body>
 {% include 'common/navbar.html' %}
@@ -11,7 +26,17 @@
 {% block content %}
 {% endblock %}
 
+{% include 'common/footer.html' %}
 
 
+      <!--main js--> 
+      <script src="js/jquery-1.12.4.min.js"></script> 
+      <!--bootstrap js--> 
+      <script src="js/bootstrap.min.js"></script> 
+      <script src="js/bootstrap-select.min.js"></script>
+      <script src="js/slick.min.js"></script> 
+      <script src="js/wow.min.js"></script>
+      <!--custom js--> 
+      <script src="js/custom.js"></script>
 </body>
 </html>
