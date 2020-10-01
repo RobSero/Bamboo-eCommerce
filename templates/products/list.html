@@ -66,6 +66,9 @@
             <div class="panel-body">
               <div class="tab-content">
                 <div class="tab-pane fade in active" id="tab1default">
+                  {% if request.GET.q %}
+                  <p> searched for: {{ request.GET.q }}</p>
+                  {% endif %}
                   <div class="product-box-main row">
                     {% for obj in object_list %}
                   {% include 'products/productcard.html' with instance=obj %}

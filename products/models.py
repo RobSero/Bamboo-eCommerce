@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Q
 import random
 import os
 from django.urls import reverse
@@ -34,6 +35,10 @@ class ProductManager(models.Manager):
   
   def feature(self):  # allows for the use of Product.objects.feature()
     return self.get_queryset().featured()
+  
+  def search(self, query):
+    lookup = Q(title__icontains=query) | Q(description__icontains=query) | Q(tag__title__icontains=query) 
+    return self.get_queryset().filter(lookup).active().distinct() # distinct stops the same item being shown twice if it matches both Q statements
 
 
 

@@ -13,9 +13,9 @@
                  </button>
                  <a href="{% url 'home' %}" class="navbar-brand">BAMBOO</a>
               </div>
-              <form class="navbar-form navbar-left web-sh">
+              <form method="GET" action="{% url 'search' %}" class="navbar-form navbar-left web-sh">
                  <div class="form">
-                    <input type="text" class="form-control" placeholder="Search for products or companies">
+                    <input name='q' type="text" class="form-control" placeholder="Search for products or companies" value='{{ request.GET.q}}'>
                  </div>
               </form>
            </div>
