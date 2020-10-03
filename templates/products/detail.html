@@ -161,7 +161,15 @@
                  <option value="4">4</option>
                  <option value="5">5</option>
               </select>
-              <a href="#">Add to Basket</a>
+              {% if object in cart.products.all %}
+              <a href="#">In Cart</a>
+              {% else %}
+              <form method="POST" action="{% url 'cartupdate' %}" > {% csrf_token %}
+                <input type="hidden" name='product_id' value='{{ object.id }}' />
+                <button type="submit" id='buy-button'>Add to Basket</button type="submit">
+              </form>
+              {% endif %}
+              
               <h5><i class="fa fa-clock-o" aria-hidden="true"></i> <strong>16 hours</strong> avg. responsive time</h5>
            </div>
         </div>

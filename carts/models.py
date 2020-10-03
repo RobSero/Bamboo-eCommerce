@@ -5,37 +5,38 @@ from django.db.models.signals import m2m_changed, pre_save
 
 User = settings.AUTH_USER_MODEL
 
+#  add new methods to the objects.METHOD 
 class CartManager(models.Manager):
+  # creates a new cart or returns the current cart stored in session
   def new_cart_or_get(self, req):
-      cart_id = req.session.get('cart_id', None)
-      if cart_id == None:
-        cart = self.new(user=req.user)
-        req.session['cart_id'] = cart.id
-        new_cart = True
+    # check cart_id in session
+      cart_id = req.session.get("cart_id", None)
+      query = self.get_queryset().filter(id=cart_id)
+      # check if a cart is returned
+      if query.count() == 1:
+        new_cart = False
+        cart = query.first()
+        if req.user.is_authenticated and cart.user is None:
+            cart.user = req.user
+            cart.save()
       else:
-        query = self.get_queryset().filter(id=cart_id)
-        if query.count() == 1:
-            cart = query.first()
-            if req.user.is_authenticated and cart.user is None:
-              cart.user = req.user
-              cart.save()
-              new_cart = False
-        else:
-            cart = self.new(user=req.user)
+        # create cart if one does not exist in session
+            cart = Cart.objects.new(user=req.user)
             new_cart = True
-        req.session['cart_id'] = cart.id
+            req.session['cart_id'] = cart.id
       return cart, new_cart
     
-  
+  #  create new cart, pass user from session, set to None if does not exist
   def new(self, user=None):
-    print(user)
     user_object = None
     if user is not None:
       if user.is_authenticated:
         user_object = user
     return self.model.objects.create(user=user_object)
 
-# Create your models here.
+
+
+#  ------------------------ CART MODEL ---------------------------
 class Cart(models.Model):
   user = models.ForeignKey(User, null=True, blank=True, on_delete=models.PROTECT)
   products = models.ManyToManyField(Product, blank=True)
@@ -46,9 +47,9 @@ class Cart(models.Model):
   timestamp = models.DateTimeField(auto_now_add=True)
   
   objects = CartManager()
-  # def __str__(self):
-  #   return (self.id)
-  
+
+
+# check manyToMany Changes and update cart total
 def m2m_cart_reciever(sender, instance, action, *args, **kwargs):
   if action == 'post_add' or action == 'post_remove' or action == 'post_clear':
     total = 0
@@ -59,7 +60,11 @@ def m2m_cart_reciever(sender, instance, action, *args, **kwargs):
   instance.save()
 m2m_changed.connect(m2m_cart_reciever, sender=Cart.products.through)
 
+# update total when presave
 def pre_save_cart(sender, instance, *args, **kwargs):
-  instance.total = instance.subtotal + 10
+  if instance.subtotal > 0:
+    instance.total = instance.subtotal + 10
+  else:
+    instance.total = 0.00
   
 pre_save.connect(pre_save_cart, sender=Cart)
