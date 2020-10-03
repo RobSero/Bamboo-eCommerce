@@ -68,16 +68,8 @@
         <div class="flex-totals">
           <h5 class="flex-totals-item">Total:</h5><h5 class="flex-totals-item">£{{ cart.total }}</h5>
         </div>
-          {% if object in cart.products.all %}
-          <a href="#">In Cart</a>
-          {% else %}
-          <form method="POST" action="{% url 'cartupdate' %}"> {% csrf_token %}
-            <input type="hidden" name='product_id' value='{{ object.id }}' />
-            <button type="submit" id='buy-button'>Add to Basket</button type="submit">
+            <a href="{% url 'checkout' %}">Checkout</a >
           </form>
-          {% endif %}
-
-          <h5><i class="fa fa-clock-o" aria-hidden="true"></i> <strong>16 hours</strong> avg. responsive time</h5>
         </div>
       </div>
     </div>

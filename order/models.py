@@ -25,7 +25,10 @@ class Order(models.Model):
   def __str__(self):
     return self.order_id
   
-  
+  def update_total(self):
+    self.total = self.cart.total + self.shipping_total
+    self.save()
+    return self.total
   
   
   
@@ -35,3 +38,23 @@ def pre_save_order_id_generator(sender,instance, *args, **kwargs):
     instance.order_id = ''.join(random.choices(string.ascii_uppercase + string.digits,k=20))
 
 pre_save.connect(pre_save_order_id_generator,sender=Order)
+
+# FIRES WHEN CART IS SAVED, WILL UPDATE TOTAL OF ORDER
+def post_save_cart_update_order(sender,instance, created, *args, **kwargs):
+  if not created:
+    cart = instance
+    find_order = Order.objects.filter(cart__id=cart.id)
+    if find_order.count() == 1:
+      order = find_order.first()
+      order.update_total()
+
+post_save.connect(post_save_cart_update_order, sender=Cart)
+
+
+# FIRES WHEN AN ORDER IS INITIALLY CREATED, WILL CALCULATE THE TOTAL BASED ON THE CART IT IS ASSIGNED TO
+def post_save_order(sender,instance, created, *args, **kwargs):
+  if created:
+    print('CART CREATED - UPDATING TOTAL')
+    instance.update_total()
+    
+post_save.connect(post_save_order, sender=Order)
