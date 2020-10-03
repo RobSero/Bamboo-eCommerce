@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import LoginForm, RegisterForm
 from django.contrib.auth import authenticate, login, get_user_model
-
+from django.utils.http import is_safe_url
 
 
 #  --------------- LOGIN FORM --------------------
@@ -9,6 +9,9 @@ from django.contrib.auth import authenticate, login, get_user_model
 def login_page(req):
   login_form = LoginForm(req.POST or None)
   print(req.user.is_authenticated)
+  next_ = req.GET.get('next')
+  next_post = req.POST.get('next')
+  redirect_path = next_ or next_post or None
   # validate form
   if login_form.is_valid():
     # check if user is valid
@@ -18,8 +21,10 @@ def login_page(req):
     if user is not None:
       # success - login user and redirect
       login(req,user)
-      print(req.user.is_authenticated)
-      return redirect('login')
+      if is_safe_url(redirect_path,req.get_host()):
+        return redirect(redirect_path)
+      else:
+        return redirect('home')
     else:
       print('WRONG CREDENTIALS')
     

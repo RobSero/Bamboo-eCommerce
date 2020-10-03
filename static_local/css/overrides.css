@@ -24,3 +24,9 @@
   flex-wrap: wrap;
   justify-content: space-between;
 }
+
+.checkout-form-container {
+  width: 350px;
+  margin: 10px auto;
+  background-color: green;
+}
