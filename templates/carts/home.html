@@ -1,5 +1,90 @@
 {% extends 'common/base.html' %}
-
+{% load static %}
 {% block content %}
-<h1> CARTS </h1>
+
+<div class="product-page-main">
+  <div class="container">
+    <div class="cart-title">
+      <h1>Your Cart</h1>
+    </div>
+    <div class="row cart-table">
+      {% if cart.products.all  %}
+      <div class="col-md-9 col-sm-8">
+        <div class="md-prod-page">
+          <div class="md-prod-page-in">
+            <div class="page-preview">
+              <table class="table cart-table">
+                <thead>
+                  <tr>
+                    <th><abbr title="Position">No.</abbr></th>
+                    <th>Image</th>
+                    <th>Product</th>
+                    <th><abbr title="Played">Price</abbr></th>
+                    <th>Remove</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for product in cart.products.all %}
+                  <tr>
+                    <th>{{ forloop.counter }}</th>
+                    <td><a href="{{ product.get_absolute_url }}"><img class="product-thumbnail" src="{{ product.image.url }}" /></a></td>
+                    <td><a href="{{ product.get_absolute_url }}">{{ product.title }}</a></td>
+                    <td>{{ product.price }}</td>
+                    <td>{% include 'carts/snippets/removeform.html' with object=product %}</td>
+                  </tr>
+                  {% endfor %}
+                  <tr>
+                    <th></th>
+                    <td></td>
+                    <td>Subtotal:</td>
+                    <td>{{ cart.subtotal }}</td>
+                  </tr>
+                  <tr>
+                    <th></th>
+                    <td></td>
+                    <td>Total:</td>
+                    <td>{{ cart.total }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+           
+          </div>
+          
+        </div>
+
+      </div>
+      {% else %}
+      <div class="col-md-9 col-sm-8">
+        <p style="text-align:center; margin-top: 50px">No items in cart</p>
+      </div>
+      {% endif %}
+      <div class="col-md-3 col-sm-12">
+        <div class="price-box-right">
+          <h4>Summary</h4>
+          <div class="flex-totals">
+          <h5 class="flex-totals-item">Subtotal:</h5><h5 class="flex-totals-item">£{{ cart.subtotal }}</h5>
+        </div>
+        <div class="flex-totals">
+          <h5 class="flex-totals-item">Total:</h5><h5 class="flex-totals-item">£{{ cart.total }}</h5>
+        </div>
+          {% if object in cart.products.all %}
+          <a href="#">In Cart</a>
+          {% else %}
+          <form method="POST" action="{% url 'cartupdate' %}"> {% csrf_token %}
+            <input type="hidden" name='product_id' value='{{ object.id }}' />
+            <button type="submit" id='buy-button'>Add to Basket</button type="submit">
+          </form>
+          {% endif %}
+
+          <h5><i class="fa fa-clock-o" aria-hidden="true"></i> <strong>16 hours</strong> avg. responsive time</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
 {% endblock %}

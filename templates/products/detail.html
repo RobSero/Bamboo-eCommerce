@@ -1,6 +1,3 @@
-
-
-
 {% extends 'common/base.html' %}
 {% load static %}
 
@@ -10,15 +7,15 @@
 
 <div class="terms-conditions product-page">
   <div class="terms-title">
-     <div class="container">
-        <div class="row">
-           <ol class="breadcrumb">
-              <li><a href='{% url "home" %}'>Home </a></li>
-              <li ><a href='{% url "list" %}'>Products</a></li>
-              <li class="active">{{ object.title }} </li>
-           </ol>
-        </div>
-     </div>
+    <div class="container">
+      <div class="row">
+        <ol class="breadcrumb">
+          <li><a href='{% url "home" %}'>Home </a></li>
+          <li><a href='{% url "list" %}'>Products</a></li>
+          <li class="active">{{ object.title }} </li>
+        </ol>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -26,158 +23,157 @@
 
 <div class="product-page-main">
   <div class="container">
-     <div class="row">
-        <div class="col-md-12">
-           <div class="prod-page-title">
-              <h2>{{ object.title }} </h2>
-              <p>By <span>Robert Serowka</span></p>
-           </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="prod-page-title">
+          <h2>{{ object.title }} </h2>
+          <p>By <span>Robert Serowka</span></p>
         </div>
-     </div>
-     <div class="row">
-        <div class="col-md-2 col-sm-4">
-           <div class="left-profile-box-m prod-page">
-              <div class="pro-img">
-                 <img src='{% static "img/150x150.png" %}' alt="#" />
-              </div>
-              <div class="pof-text">
-                 <h3>{{ object.material }}</h3>
-                 <div class="check-box"></div>
-              </div>
-              <a href='https://en.wikipedia.org/wiki/{{ object.material }}' target="_blank">Bamboo Details</a>
-           </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2 col-sm-4">
+        <div class="left-profile-box-m prod-page">
+          <div class="pro-img">
+            <img src='{% static "img/150x150.png" %}' alt="#" />
+          </div>
+          <div class="pof-text">
+            <h3>{{ object.material }}</h3>
+            <div class="check-box"></div>
+          </div>
+          <a href='https://en.wikipedia.org/wiki/{{ object.material }}' target="_blank">Bamboo Details</a>
         </div>
-        <div class="col-md-7 col-sm-8">
-           <div class="md-prod-page">
-              <div class="md-prod-page-in">
-                 <div class="page-preview">
-                    <div class="preview">
-                       <div class="preview-pic tab-content">
-                          <div class="tab-pane active" id="pic-1"><img src="{{ object.image.url }}" alt="#" /></div>
-                          <div class="tab-pane" id="pic-2"><img src="{{ object.image.url }}" alt="#" /></div>
-                          <div class="tab-pane" id="pic-3"><img src="{{ object.image.url }}" alt="#" /></div>
-                          <div class="tab-pane" id="pic-4"><img src="{{ object.image.url }}" alt="#" /></div>
-                       </div>
-                       <ul class="preview-thumbnail nav nav-tabs">
-                          <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="{{ object.image.url }}" alt="#" /></a></li>
-                          <li><a data-target="#pic-2" data-toggle="tab"><img src="{{ object.image.url }}" alt="#" /></a></li>
-                          <li><a data-target="#pic-3" data-toggle="tab"><img src="{{ object.image.url }}" alt="#" /></a></li>
-                          <li><a data-target="#pic-4" data-toggle="tab"><img src="{{ object.image.url }}" alt="#" /></a></li>
-                       </ul>
-                    </div>
-                 </div>
-                 <div class="btn-dit-list clearfix">
-                    <div class="left-dit-p">
-                       <div class="prod-btn">
-                          <a href="#"><i class="fa fa-star" aria-hidden="true"></i> Save to wishlist</a>
-                          <a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Like this</a>
-                          <p>23 likes</p>
-                       </div>
-                    </div>
-         
-                 </div>
+      </div>
+      <div class="col-md-7 col-sm-8">
+        <div class="md-prod-page">
+          <div class="md-prod-page-in">
+            <div class="page-preview">
+              <div class="preview">
+                <div class="preview-pic tab-content">
+                  <div class="tab-pane active" id="pic-1"><img src="{{ object.image.url }}" alt="#" /></div>
+                  <div class="tab-pane" id="pic-2"><img src="{{ object.image.url }}" alt="#" /></div>
+                  <div class="tab-pane" id="pic-3"><img src="{{ object.image.url }}" alt="#" /></div>
+                  <div class="tab-pane" id="pic-4"><img src="{{ object.image.url }}" alt="#" /></div>
+                </div>
+                <ul class="preview-thumbnail nav nav-tabs">
+                  <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="{{ object.image.url }}"
+                        alt="#" /></a></li>
+                  <li><a data-target="#pic-2" data-toggle="tab"><img src="{{ object.image.url }}" alt="#" /></a></li>
+                  <li><a data-target="#pic-3" data-toggle="tab"><img src="{{ object.image.url }}" alt="#" /></a></li>
+                  <li><a data-target="#pic-4" data-toggle="tab"><img src="{{ object.image.url }}" alt="#" /></a></li>
+                </ul>
               </div>
-              <div class="description-box">
-                 <div class="dex-a">
-                    <h4>Description</h4>
-                    <p>{{ object.description }}
-                    </p>
-                 </div>
-                 <div class="spe-a">
-                    <h4>Specifications</h4>
-                    <ul>
-                       <li class="clearfix">
-                          <div class="col-md-4">
-                             <h5>Measurments</h5>
-                          </div>
-                          <div class="col-md-8">
-                             <p>{{ object.measurements }}</p>
-                          </div>
-                       </li>
-                       <li class="clearfix">
-                          <div class="col-md-4">
-                             <h5>Material</h5>
-                          </div>
-                          <div class="col-md-8">
-                             <p>{{ object.material }}</p>
-                          </div>
-                       </li>
-                      
-                       <li class="clearfix">
-                          <div class="col-md-4">
-                             <h5>Comdition</h5>
-                          </div>
-                          <div class="col-md-8">
-                             <p>{{ object.condition }}</p>
-                          </div>
-                       </li>
-                       <li class="clearfix">
-                          <div class="col-md-4">
-                             <h5>Product No.</h5>
-                          </div>
-                          <div class="col-md-8">
-                             <p>BB34{{ object.id }}</p>
-                          </div>
-                       </li>
-                       <li class="clearfix">
-                          <div class="col-md-4">
-                             <h5>Shipping</h5>
-                          </div>
-                          <div class="col-md-8">
-                             <p>Shipping worldwide</p>
-                          </div>
-                       </li>
-                       <li class="clearfix">
-                          <div class="col-md-4">
-                             <h5>Warranty</h5>
-                          </div>
-                          <div class="col-md-8">
-                             <p>1 years</p>
-                          </div>
-                       </li>
-                       <li class="clearfix">
-                          <div class="col-md-4">
-                             <h5>Delivery</h5>
-                          </div>
-                          <div class="col-md-8">
-                             <p>UK Only</p>
-                          </div>
-                       </li>
-                    </ul>
-                 </div>
+            </div>
+            <div class="btn-dit-list clearfix">
+              <div class="left-dit-p">
+                <div class="prod-btn">
+                  <a href="#"><i class="fa fa-star" aria-hidden="true"></i> Save to wishlist</a>
+                  <a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Like this</a>
+                  <p>23 likes</p>
+                </div>
               </div>
-           </div>
-          
+
+            </div>
+          </div>
+          <div class="description-box">
+            <div class="dex-a">
+              <h4>Description</h4>
+              <p>{{ object.description }}
+              </p>
+            </div>
+            <div class="spe-a">
+              <h4>Specifications</h4>
+              <ul>
+                <li class="clearfix">
+                  <div class="col-md-4">
+                    <h5>Measurments</h5>
+                  </div>
+                  <div class="col-md-8">
+                    <p>{{ object.measurements }}</p>
+                  </div>
+                </li>
+                <li class="clearfix">
+                  <div class="col-md-4">
+                    <h5>Material</h5>
+                  </div>
+                  <div class="col-md-8">
+                    <p>{{ object.material }}</p>
+                  </div>
+                </li>
+
+                <li class="clearfix">
+                  <div class="col-md-4">
+                    <h5>Comdition</h5>
+                  </div>
+                  <div class="col-md-8">
+                    <p>{{ object.condition }}</p>
+                  </div>
+                </li>
+                <li class="clearfix">
+                  <div class="col-md-4">
+                    <h5>Product No.</h5>
+                  </div>
+                  <div class="col-md-8">
+                    <p>BB34{{ object.id }}</p>
+                  </div>
+                </li>
+                <li class="clearfix">
+                  <div class="col-md-4">
+                    <h5>Shipping</h5>
+                  </div>
+                  <div class="col-md-8">
+                    <p>Shipping worldwide</p>
+                  </div>
+                </li>
+                <li class="clearfix">
+                  <div class="col-md-4">
+                    <h5>Warranty</h5>
+                  </div>
+                  <div class="col-md-8">
+                    <p>1 years</p>
+                  </div>
+                </li>
+                <li class="clearfix">
+                  <div class="col-md-4">
+                    <h5>Delivery</h5>
+                  </div>
+                  <div class="col-md-8">
+                    <p>UK Only</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div class="col-md-3 col-sm-12">
-           <div class="price-box-right">
-              <h4>Price</h4>
-              <h3>£{{ object.price }} <span>each</span></h3>
-              <p>Quantity</p>
-              <select class="form-control select2">
-                 <option value="1">1</option>
-                 <option value="2">2</option>
-                 <option value="3">3</option>
-                 <option value="4">4</option>
-                 <option value="5">5</option>
-              </select>
-              {% if object in cart.products.all %}
-              <a href="#">In Cart</a>
-              {% else %}
-              <form method="POST" action="{% url 'cartupdate' %}" > {% csrf_token %}
-                <input type="hidden" name='product_id' value='{{ object.id }}' />
-                <button type="submit" id='buy-button'>Add to Basket</button type="submit">
-              </form>
-              {% endif %}
-              
-              <h5><i class="fa fa-clock-o" aria-hidden="true"></i> <strong>16 hours</strong> avg. responsive time</h5>
-           </div>
+
+      </div>
+      <div class="col-md-3 col-sm-12">
+        <div class="price-box-right">
+          <h4>Price</h4>
+          <h3>£{{ object.price }} <span>each</span></h3>
+          <p>Quantity</p>
+          <select class="form-control select2">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          {% if object in cart.products.all %}
+          <a href="#">In Cart</a>
+          {% else %}
+          <form method="POST" action="{% url 'cartupdate' %}"> {% csrf_token %}
+            <input type="hidden" name='product_id' value='{{ object.id }}' />
+            <button type="submit" id='buy-button'>Add to Basket</button type="submit">
+          </form>
+          {% endif %}
+
+          <h5><i class="fa fa-clock-o" aria-hidden="true"></i> <strong>16 hours</strong> avg. responsive time</h5>
         </div>
-     </div>
+      </div>
+    </div>
   </div>
 </div>
 
 
 {% endblock %}
-
-

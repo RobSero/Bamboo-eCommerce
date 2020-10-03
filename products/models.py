@@ -60,7 +60,9 @@ class Product(models.Model):
   material = models.CharField(max_length=50, default='N/A')
   condition = models.CharField(max_length=50, default='N/A')
   
-  
+  @property
+  def name(self):
+    return self.title
   
   
   objects = ProductManager()
