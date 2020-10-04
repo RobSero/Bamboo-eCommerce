@@ -34,8 +34,12 @@ INSTALLED_APPS = [
     'tags',
     'carts',
     'order',
-    'billing'
+    'billing',
+    'accounts'
 ]
+
+# change default user model to custom model
+AUTH_USER_MODEL = 'accounts.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
