@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 class UserManager(BaseUserManager):
-  def create_user(self, email, password=None, is_active=True, is_admin=False):
+  def create_user(self, email, password=None, is_active=True, is_admin=False, is_staff=False):
     if not email:
       raise ValueError('User must have an email')
     if not password:
@@ -13,6 +13,7 @@ class UserManager(BaseUserManager):
     new_user.set_password(password)
     new_user.active = is_active
     new_user.admin = is_admin
+    new_user.staff = is_staff
     new_user.save(using=self._db)
     return new_user
   
@@ -20,7 +21,8 @@ class UserManager(BaseUserManager):
     new_superuser = self.create_user(
       email,
       password = password,
-      is_admin=True
+      is_admin=True,
+      is_staff=True
     )
     
 
@@ -30,6 +32,7 @@ class User(AbstractBaseUser):
   full_name = models.CharField(max_length=100, blank=True, null=True)
   active = models.BooleanField(default=True)
   admin = models.BooleanField(default=False)
+  staff = models.BooleanField(default=False)
   
   objects = UserManager()
   
@@ -37,5 +40,16 @@ class User(AbstractBaseUser):
   REQUIRED_FIELDS = []
   
   def __str__(self):
-    return self.full_name
+    return self.email
   
+  def is_staff(self):
+    return self.staff
+  
+  def is_admin(self):
+      return self.admin
+    
+  def has_perm(self,perm, obj=None):
+    return True
+  
+  def has_module_perms(self, app_label):
+    return True

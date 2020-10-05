@@ -11,7 +11,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="profile-b">
-          <img src="{% static 'img/lag-63.png' %}" alt="#" />
+          <img src="{% static 'img/bamboobackground.jpg' %}" alt="#" />
           <div class="dit-p">
             <div class="col-md-2"></div>
             <div class="col-md-10">
@@ -54,13 +54,18 @@
               </ul>
               <ul class="nav nav-tabs pull-right right-t">
                 <li class="dropdown">
-                  <a href="#" data-toggle="dropdown">Sort <span class="caret"></span></a>
-                  <ul class="dropdown-menu" role="menu">
-                    <li><a href="#tab4default" data-toggle="tab">Default 4</a></li>
-                  </ul>
+                  <form method="GET" action="{% url 'search' %}" class="navbar-form navbar-left web-sh">
+                    <select name='q' onchange="this.form.submit()" value='req.GET.q'>
+                      <option selected disabled>Filter</option>
+                      <option value="">All</option>
+                      <option value="clothes">Clothes</option>
+                      <option value="furniture">Furniture</option>
+                      <option value="random">Random!</option>
+                    </select>
+                </form>
+                 
                 </li>
-                <li><a href="#tab5default" data-toggle="tab"><i class="fa fa-sliders" aria-hidden="true"></i> Refine</a>
-                </li>
+                
               </ul>
             </div>
             <div class="panel-body">

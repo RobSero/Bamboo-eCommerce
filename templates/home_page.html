@@ -13,14 +13,16 @@
           <div class="product-sh">
             <div class="col-sm-9">
               <div class="form-sh">
-                <input type="text" placeholder="Search something you love">
+                <form method="GET" action="{% url 'search' %}" >
+                <input name='q' type="text" placeholder="Search something you love">
               </div>
             </div>
 
             <div class="col-sm-3">
               <div class="form-sh"> <a class="btn" href="#">Search</a> </div>
             </div>
-            <p>Or simply<a href="#"> click here </a> and get inspired!</p>
+          </form>
+            <p>Or simply<a href="{% url 'list' %}"> click here </a> and get inspired!</p>
           </div>
         </div>
       </div>
@@ -28,32 +30,32 @@
         <div class="col-lg-3 col-sm-6 col-md-3">
           <a href="{% url 'list' %}">
             <div class="box-img">
-              <h4>Product</h4>
-              <img src="{% static 'img/1.png' %}" alt="" />
+              <h4>Furniture</h4>
+              <img class='product-search-icons' src="{% static 'img/1.png' %}" alt="" />
             </div>
           </a>
         </div>
         <div class="col-lg-3 col-sm-6 col-md-3">
           <a href="{% url 'list' %}">
             <div class="box-img">
-              <h4>Product</h4>
-              <img src="{% static 'img/1.png' %}" alt="" />
+              <h4>Bathroom</h4>
+              <img class='product-search-icons' src="{% static 'img/bathroomIcon.png' %}" alt="" />
             </div>
           </a>
         </div>
         <div class="col-lg-3 col-sm-6 col-md-3">
           <a href="{% url 'list' %}">
             <div class="box-img">
-              <h4>Product</h4>
-              <img src="{% static 'img/1.png' %}" alt="" />
+              <h4>Products</h4>
+              <img class='product-search-icons' src="{% static 'img/productIcon.png' %}" alt="" />
             </div>
           </a>
         </div>
         <div class="col-lg-3 col-sm-6 col-md-3">
           <a href="{% url 'list' %}">
             <div class="box-img">
-              <h4>Product</h4>
-              <img src="{% static 'img/1.png' %}" alt="" />
+              <h4>Gifts</h4>
+              <img class='product-search-icons' src="{% static 'img/giftsIcon.png' %}" alt="" />
             </div>
           </a>
         </div>

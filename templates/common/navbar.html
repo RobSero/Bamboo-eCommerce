@@ -37,7 +37,7 @@
                  <div class="help-r hidden-xs">
                     <div class="help-box">
                        <ul>
-                          <li> <a data-toggle="modal" data-target="#myModal" href="#"> <span>Change</span> <img src="images/flag.png" alt="" /> </a> </li>
+                          <li> <a href="{% url 'about' %}"> About </a> </li>
                           <li> <a href="{% url 'carthome' %}"><img class="cart-icon" src="{% static 'img/cartIcon.png' %}" alt="" /> {{request.session.cart_items}} </a></li>
                        </ul>
                     </div>
@@ -45,7 +45,7 @@
                  <div class="nav-b hidden-xs">
                     <div class="nav-box">
                        <ul>
-                          <li><a href="{% url 'about' %}">About</a></li>
+                          <li><a href="{% url 'list' %}">Products</a></li>
                           <li><a href="{% url 'contact' %}">Contact Us</a></li>
                        </ul>
                     </div>

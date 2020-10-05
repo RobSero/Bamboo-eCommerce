@@ -1,0 +1,82 @@
+[
+{
+    "model": "products.product",
+    "pk": 1,
+    "fields": {
+        "title": "Bamboo Toilet Brush",
+        "slug": "toiletbrush",
+        "description": "Nice for cleaning your pan",
+        "price": "2.50",
+        "image": "products/131074/131074.jpg",
+        "image1": "",
+        "image2": "",
+        "image3": "",
+        "image4": "",
+        "featured": true,
+        "active": true,
+        "measurements": "N/A",
+        "material": "Pleioblastus",
+        "condition": "N/A"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 2,
+    "fields": {
+        "title": "toothbrush",
+        "slug": "toothbrush",
+        "description": "ededede",
+        "price": "0.99",
+        "image": "products/18407/18407.png",
+        "image1": "",
+        "image2": "",
+        "image3": "",
+        "image4": "",
+        "featured": false,
+        "active": true,
+        "measurements": "N/A",
+        "material": "Fargesia",
+        "condition": "N/A"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 3,
+    "fields": {
+        "title": "clothes",
+        "slug": "clothes",
+        "description": "vvwsvdffdvdv",
+        "price": "0.99",
+        "image": "products/174422/174422.jpg",
+        "image1": "",
+        "image2": "",
+        "image3": "",
+        "image4": "",
+        "featured": true,
+        "active": true,
+        "measurements": "N/A",
+        "material": "Bambusinae",
+        "condition": "N/A"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 4,
+    "fields": {
+        "title": "bamboo Chair",
+        "slug": "chair",
+        "description": "Nice looking chair here",
+        "price": "250.99",
+        "image": "products/183309/183309.png",
+        "image1": "",
+        "image2": "",
+        "image3": "",
+        "image4": "",
+        "featured": true,
+        "active": true,
+        "measurements": "N/A",
+        "material": "Arundinarieae",
+        "condition": "N/A"
+    }
+}
+]
