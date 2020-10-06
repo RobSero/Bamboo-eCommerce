@@ -39,6 +39,7 @@
                        <ul>
                           <li> <a href="{% url 'about' %}"> About </a> </li>
                           <li> <a href="{% url 'carthome' %}"><img class="cart-icon" src="{% static 'img/cartIcon.png' %}" alt="" /> {{request.session.cart_items}} </a></li>
+                          <li> <a href="{% url 'carthome' %}"><img class="cart-icon" src="{% static 'img/heartIcon.png' %}" alt="" /> {{request.session.cart_items}} </a></li>
                        </ul>
                     </div>
                  </div>
