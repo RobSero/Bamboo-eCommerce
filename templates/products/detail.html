@@ -51,16 +51,25 @@
               <div class="preview">
                 <div class="preview-pic tab-content">
                   <div class="tab-pane active" id="pic-1"><img src="{{ object.image.url }}" alt="#" /></div>
-                  <div class="tab-pane" id="pic-2"><img src="{{ object.image.url }}" alt="#" /></div>
-                  <div class="tab-pane" id="pic-3"><img src="{{ object.image.url }}" alt="#" /></div>
-                  <div class="tab-pane" id="pic-4"><img src="{{ object.image.url }}" alt="#" /></div>
+                  
+                  <div class="tab-pane" id="pic-2"><img src="{{ object.image1.url }}" alt="#" /></div>
+                  <div class="tab-pane" id="pic-3"><img src="{{ object.image2.url }}" alt="#" /></div>
+                  <div class="tab-pane" id="pic-4"><img src="{{ object.image3.url }}" alt="#" /></div>
                 </div>
                 <ul class="preview-thumbnail nav nav-tabs">
+                  {% if object.image %}
                   <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="{{ object.image.url }}"
                         alt="#" /></a></li>
-                  <li><a data-target="#pic-2" data-toggle="tab"><img src="{{ object.image.url }}" alt="#" /></a></li>
-                  <li><a data-target="#pic-3" data-toggle="tab"><img src="{{ object.image.url }}" alt="#" /></a></li>
-                  <li><a data-target="#pic-4" data-toggle="tab"><img src="{{ object.image.url }}" alt="#" /></a></li>
+                   {% endif %} 
+                   {% if object.image1 %}
+                  <li><a data-target="#pic-2" data-toggle="tab"><img src="{{ object.image1.url }}" alt="#" /></a></li>
+                  {% endif %} 
+                  {% if object.image2 %}
+                  <li><a data-target="#pic-3" data-toggle="tab"><img src="{{ object.image2.url }}" alt="#" /></a></li>
+                  {% endif %} 
+                  {% if object.image3 %}
+                  <li><a data-target="#pic-4" data-toggle="tab"><img src="{{ object.image3.url }}" alt="#" /></a></li>
+                  {% endif %} 
                 </ul>
               </div>
             </div>

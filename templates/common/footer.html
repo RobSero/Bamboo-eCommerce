@@ -1,3 +1,4 @@
+{% load static %}
 <footer>
   <div class="main-footer">
      <div class="container">
@@ -38,33 +39,37 @@
      <div class="container">
         <div class="row">
            <div class="col-md-8">
-              <p><img width="90" src="images/logo.png" alt="#" style="margin-top: -5px;" /> All Rights Reserved. Company Name © {% now "Y" %}</p>
+            <ul class="list-inline socials float-left">
+              <li><p><img width="25" src="{% static 'img/Blogo.png' %}" alt="#" style="margin-top: -5px;" /> All Rights Reserved. Company Name © {% now "Y" %}</p></li>
+            </ul>
            </div>
            <div class="col-md-4">
               <ul class="list-inline socials">
+                <li>
+                  <a href="{% url 'about' %}">
+                    <p> About</p>
+                  </a>
+               </li>
                  <li>
-                    <a href="">
-                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                    <a href="https://www.facebook.com/">
+                    <img src="{% static 'img/fblogo.png' %}" class="social-logo" aria-hidden="true" />
                     </a>
                  </li>
                  <li>
-                    <a href="">
-                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                    <a href="https://www.instagram.com/">
+                      <img src="{% static 'img/instalogo.png' %}" class="social-logo" aria-hidden="true" />
                     </a>
                  </li>
                  <li>
-                    <a href="">
-                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                    <a href="https://twitter.com/">
+                      <img src="{% static 'img/twitterlogo.png' %}" class="social-logo" aria-hidden="true" />
                     </a>
                  </li>
                  <li>
-                    <a href="#">
-                    <i class="fa fa-linkedin" aria-hidden="true"></i>
+                    <a href="https://www.whatsapp.com/">
+                      <img src="{% static 'img/whatslogo.png' %}" class="social-logo" aria-hidden="true" />
                     </a>
                  </li>
-              </ul>
-              <ul class="right-flag">
-                 <li><a href="#"><img src="images/flag.png" alt="" /> <span>Change</span></a></li>
               </ul>
            </div>
         </div>

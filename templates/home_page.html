@@ -168,7 +168,9 @@
                   connected to thousands of interested in your
                   products.
                 </p>
-                <a href="#">Create a buyer account</a>
+                {% if not request.user.is_authenticated %}
+                <a href="{% url 'register' %}">Create a buyer account</a>
+                {% endif %}
               </div>
             </div>
           </div>

@@ -50,3 +50,18 @@
   font-weight: 500;
   border-radius: 3px;
 }
+
+
+/* ---------------------------------------------
+                    FOOTER PAGE
+--------------------------------------------- */
+@media only screen and (min-width: 600px) {
+.float-left {
+  float: left!important;
+}
+}
+
+
+.social-logo {
+  width: 20px!important;
+}
