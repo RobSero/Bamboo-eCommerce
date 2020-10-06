@@ -39,3 +39,14 @@
 .product-search-icons {
   height: 200px!important;
 }
+
+.form-sh button.btn {
+  background: #1d99ff;
+  color: #ffffff;
+  min-height: 55px;
+  width: 100%;
+  line-height: 38px;
+  font-size: 22px;
+  font-weight: 500;
+  border-radius: 3px;
+}

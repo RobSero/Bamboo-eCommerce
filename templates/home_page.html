@@ -19,7 +19,7 @@
             </div>
 
             <div class="col-sm-3">
-              <div class="form-sh"> <a class="btn" href="#">Search</a> </div>
+              <div class="form-sh"> <button type="submit" class="btn">Search</button> </div>
             </div>
           </form>
             <p>Or simply<a href="{% url 'list' %}"> click here </a> and get inspired!</p>
@@ -61,7 +61,7 @@
         </div>
 
         <div class="categories_link">
-          <a href="#">Browse all categories here</a>
+          <a href="{% url 'list' %}">Browse all categories here</a>
         </div>
       </div>
     </div>

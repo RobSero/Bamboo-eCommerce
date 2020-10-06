@@ -25,11 +25,11 @@ class RegisterForm(forms.Form):
     }), label='')
   email = forms.EmailField(widget=forms.EmailInput(attrs={
     'class': 'form-input form-style-override', 
-    'placeholder': 'Email'
+    'placeholder': 'Email',
     }), label='')
   password = forms.CharField(widget=forms.PasswordInput(attrs={
     'class': 'form-input form-style-override', 
-    'placeholder': 'Password'
+    'placeholder': "Password",
     }), label='')
   password2 = forms.CharField(widget=forms.PasswordInput(attrs={
     'class': 'form-input form-style-override', 

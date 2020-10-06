@@ -38,6 +38,7 @@ def login_page(req):
 
 User = get_user_model()
 def register_page(req):
+  new_email = req.POST.get('email', None)
   register_form = RegisterForm(req.POST or None)
   if register_form.is_valid():
     username = register_form.cleaned_data.get('username')
@@ -46,7 +47,7 @@ def register_page(req):
     new_user = User.objects.create_user(username,email,password)
     print(new_user)
     return redirect('login')
-    
+  register_form = RegisterForm(initial={'email': req.POST.get('email')})
   context = {
     'form' : register_form
   }

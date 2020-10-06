@@ -3,6 +3,7 @@
      <div class="container">
         <div class="row">
            <div class="footer-top clearfix">
+             {% if not request.user.is_authenticated %}
               <div class="col-md-2 col-sm-6">
                  <h2>Start a free
                     account today
@@ -10,10 +11,18 @@
               </div>
               <div class="col-md-6 col-sm-6">
                  <div class="form-box">
-                    <input type="text" placeholder="Enter yopur e-mail" />
-                    <button>Continue</button>
+                   <form method="POST" action="{% url 'register' %}">{% csrf_token %}
+                    <input name='email' type="text" placeholder="Enter your e-mail" />
+                    <button type="submit">Continue</button>
+                  </form>
                  </div>
               </div>
+              {% else %}
+              <div class="col-md-8 col-sm-6">
+                <h2>We are always happy to chat about Bamboo
+                </h2>
+             </div>
+             {% endif %}
               <div class="col-md-4 col-sm-12">
                  <div class="help-box-f">
                     <h4>Question? Call us on 12 34 56 78 for help</h4>
@@ -29,7 +38,7 @@
      <div class="container">
         <div class="row">
            <div class="col-md-8">
-              <p><img width="90" src="images/logo.png" alt="#" style="margin-top: -5px;" /> All Rights Reserved. Company Name © 2018</p>
+              <p><img width="90" src="images/logo.png" alt="#" style="margin-top: -5px;" /> All Rights Reserved. Company Name © {% now "Y" %}</p>
            </div>
            <div class="col-md-4">
               <ul class="list-inline socials">
