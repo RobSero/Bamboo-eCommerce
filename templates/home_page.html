@@ -28,7 +28,7 @@
       </div>
       <div class="row clearfix">
         <div class="col-lg-3 col-sm-6 col-md-3">
-          <a href="{% url 'list' %}">
+          <a href="{% url 'search'%}?q=furniture">
             <div class="box-img">
               <h4>Furniture</h4>
               <img class='product-search-icons' src="{% static 'img/1.png' %}" alt="" />
@@ -36,7 +36,7 @@
           </a>
         </div>
         <div class="col-lg-3 col-sm-6 col-md-3">
-          <a href="{% url 'list' %}">
+          <a href="{% url 'search'%}?q=bathroom">
             <div class="box-img">
               <h4>Bathroom</h4>
               <img class='product-search-icons' src="{% static 'img/bathroomIcon.png' %}" alt="" />
@@ -52,7 +52,7 @@
           </a>
         </div>
         <div class="col-lg-3 col-sm-6 col-md-3">
-          <a href="{% url 'list' %}">
+          <a href="{% url 'search'%}?q=gifts">
             <div class="box-img">
               <h4>Gifts</h4>
               <img class='product-search-icons' src="{% static 'img/giftsIcon.png' %}" alt="" />
@@ -79,9 +79,8 @@
         <div class="panel panel-default">
           <div class="panel-body">
             <img src="{% static 'img/xpann-icon.jpg' %}" class="icon-small" alt="">
-            <h4>“Chamb” Your Business</h4>
-            <p>Grow easily with chamb. Create free account.
-              We help expanding your business easily.
+            <h4>Organic Farmed</h4>
+            <p>We are against all pesitcide and artifical growing practices to ensure the best quality.
             </p>
           </div>
         </div>
@@ -90,9 +89,8 @@
         <div class="panel panel-default">
           <div class="panel-body">
             <img src="{% static 'img/xpann-icon.jpg' %}" class="icon-small" alt="">
-            <h4>Create and add</h4>
-            <p>Grow easily with chamb. Create free account.
-              We help expanding your business easily.
+            <h4>Re-planting Bamboo</h4>
+            <p>Every plant which is removed, we replace by planting four new plants and stimulating the wildlife.
             </p>
           </div>
         </div>
@@ -101,9 +99,8 @@
         <div class="panel panel-default">
           <div class="panel-body">
             <img src="{% static 'img/xpann-icon.jpg' %}" class="icon-small" alt="">
-            <h4>Get inspired</h4>
-            <p>Grow easily with chamb. Create free account.
-              We help expanding your business easily.
+            <h4>Fairtrade Suppliers</h4>
+            <p>Our trusted suppliers are fairly traded with to ensure continued and sustained growth. All suppliers have fair opportunities.
             </p>
           </div>
         </div>
@@ -122,9 +119,9 @@
           <h4>Explore <strong>exciting</strong> and exotic products
             tailored to you.
           </h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris..
+          <p>There are over 1000 species of bamboo. This amazing plant grows in tropical and temperate environments and is very hardy, not needing pesticides or herbicides to grow well.  It is a type of grass and grows from it’s roots, when it is cut it quickly grows back with most species maturing in 3-5 years.
+
+
           </p>
         </div>
       </div>
@@ -132,9 +129,7 @@
         <div class="exciting_box l_pd">
           <img src="{% static 'img/xpann-icon.jpg' %}" class="icon-small" alt="" />
           <h4><strong>List your products on</strong> chamb and grow connections.</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris..
+          <p>Additionally, bamboo fabric is breathable, thermal regulating, wicks moisture better than polyester performance fabrics, will resist odour and is absorbent and fast drying keeping you dryer and more comfortable than any cotton or polyester fabrics.
           </p>
         </div>
       </div>
@@ -159,14 +154,11 @@
             </div>
             <div class="col-md-6 col-sm-6 wow fadeIn" data-wow-delay="0.4s">
               <div class="right-buyer">
-                <h4>buyer</h4>
-                <h2>Empower your factory<br>
-                  <span>With a new lead Channel</span>
+                <h4>clean</h4>
+                <h2>No mass producing<br>
+                  <span>Unique and sustainable</span>
                 </h2>
-                <p>Never worry about sales or income ftom outbound
-                  channels. with chamb your store is directly
-                  connected to thousands of interested in your
-                  products.
+                <p>We have millions of one-of-a-kind items, so you can find whatever you need (or really, really want). We use best-in-class technology to protect your transactions.
                 </p>
                 {% if not request.user.is_authenticated %}
                 <a href="{% url 'register' %}">Create a buyer account</a>

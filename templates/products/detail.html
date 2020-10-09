@@ -35,7 +35,7 @@
       <div class="col-md-2 col-sm-4">
         <div class="left-profile-box-m prod-page">
           <div class="pro-img">
-            <img src='{% static "img/150x150.png" %}' alt="#" />
+            <img src='{% static "" %}/img/150{{object.material}}.png' alt="#" />
           </div>
           <div class="pof-text">
             <h3>{{ object.material }}</h3>
@@ -51,10 +51,15 @@
               <div class="preview">
                 <div class="preview-pic tab-content">
                   <div class="tab-pane active" id="pic-1"><img src="{{ object.image.url }}" alt="#" /></div>
-                  
+                  {% if object.image1 %}
                   <div class="tab-pane" id="pic-2"><img src="{{ object.image1.url }}" alt="#" /></div>
+                  {% endif %}
+                  {% if object.image2 %}
                   <div class="tab-pane" id="pic-3"><img src="{{ object.image2.url }}" alt="#" /></div>
+                  {% endif %}
+                  {% if object.image3 %}
                   <div class="tab-pane" id="pic-4"><img src="{{ object.image3.url }}" alt="#" /></div>
+                  {% endif %}
                 </div>
                 <ul class="preview-thumbnail nav nav-tabs">
                   {% if object.image %}

@@ -53,7 +53,6 @@ class Product(models.Model):
   image1 = models.ImageField(upload_to=upload_image_path, null=True, blank=True)
   image2 = models.ImageField(upload_to=upload_image_path, null=True, blank=True)
   image3 = models.ImageField(upload_to=upload_image_path, null=True, blank=True)
-  image4 = models.ImageField(upload_to=upload_image_path, null=True, blank=True)
   featured = models.BooleanField(default=False)
   active = models.BooleanField(default=True)
   measurements = models.CharField(max_length=50, default='N/A')
