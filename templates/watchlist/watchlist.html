@@ -1,0 +1,68 @@
+{% extends 'common/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="product-page-main">
+  <div class="container">
+    <div class="cart-title">
+      <h1>Your Watchlist</h1>
+    </div>
+    <div class="row cart-table">
+      {% if watchlist.products.all  %}
+      <div class="col-md-9 col-sm-8">
+        <div class="md-prod-page">
+          <div class="md-prod-page-in">
+            <div class="page-preview">
+              <table class="table cart-table">
+                <thead>
+                  <tr>
+                    <th><abbr title="Position">No.</abbr></th>
+                    <th>Image</th>
+                    <th>Product</th>
+                    <th><abbr title="Played">Price</abbr></th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for product in watchlist.products.all %}
+                  <tr>
+                    <th>{{ forloop.counter }}</th>
+                    <td><a href="{{ product.get_absolute_url }}"><img class="product-thumbnail" src="{{ product.image.url }}" /></a></td>
+                    <td><a href="{{ product.get_absolute_url }}">{{ product.title }}</a></td>
+                    <td>{{ product.price }}</td>
+                    <td><button id='remove-button'><a href="{{ product.id }}">Remove</a></button></td>
+                  </tr>
+                  {% endfor %}
+               
+                </tbody>
+              </table>
+            </div>
+           
+          </div>
+          
+        </div>
+
+      </div>
+      {% else %}
+      <div class="col-md-9 col-sm-8">
+        <p style="text-align:center; margin-top: 50px">No items in cart</p>
+      </div>
+      {% endif %}
+      <div class="col-md-3 col-sm-12">
+        <div class="price-box-right">
+          <h4>Summary</h4>
+          <p>Keep your eyes peeled on these products as we frequently bring in new deals across to match the changing demands and climate.</p>
+          <p>Different species of bamboo grow best at different times of the year and this enables us to have great bargains on some of you favourite products seasonally</p>
+            <a href="{% url 'checkout' %}">Checkout</a >
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+{% endblock %}

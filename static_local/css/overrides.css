@@ -31,6 +31,14 @@
   background-color: green;
 }
 
+.centered {
+  margin: 0 auto;
+}
+
+.align-center {
+  text-align: center;
+}
+
 
 /* ---------------------------------------------
                     HOME PAGE
