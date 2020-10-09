@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import Watchlist
 from products.models import Product
+
 # Create your views here.
 
 

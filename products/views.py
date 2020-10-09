@@ -2,37 +2,43 @@ from django.shortcuts import render, get_object_or_404, Http404
 from .models import Product
 from django.views.generic import ListView, DetailView
 from carts.models import Cart
+from watchlist.models import Watchlist
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
-class ProductListView(ListView):
-  queryset = Product.objects.all()
-  template_name = 'products/list.html'
-  
-  def get_context_data(self, *args, **kwargs):
-    context = super(ProductListView, self).get_context_data(*args, **kwargs)
-    print(context)
-    return context
-  
+def ProductListView(req):
+  all_products = Product.objects.all()
+  if req.user.is_authenticated:
+    user_watchlist = Watchlist.objects.get(user=req.user.id)
+  else:
+    user_watchlist = None
+  context = {
+    'product_list' : all_products,
+    'user_watchlist' : user_watchlist
+  }
+  return render(req,'products/list.html', context)
+
   
 
-class ProductFeaturedListView(ListView):
-  queryset = Product.objects.all()
-  template_name = 'products/list.html'
+# class ProductFeaturedListView(ListView):
+#   queryset = Product.objects.all()
+#   template_name = 'products/list.html'
   
-  def get_queryset(self, *args, **kwargs):
-      print('HEEEDHEUD')
-      request = self.request
-      return Product.objects.feature()
+#   def get_queryset(self, *args, **kwargs):
+#       print('HEEEDHEUD')
+#       request = self.request
+#       return Product.objects.feature()
     
 
 
-class ProductDetailView(DetailView):
-  template_name = 'products/detail.html'
-  queryset = Product.objects.all()
+# class ProductDetailView(DetailView):
+#   template_name = 'products/detail.html'
+#   queryset = Product.objects.all()
 
-  def get_queryset(self, *args, **kwargs):
-    request = self.request
-    pk = self.kwargs.get('pk')
-    return Product.objects.get_by_id(pk)
+#   def get_queryset(self, *args, **kwargs):
+#     request = self.request
+#     pk = self.kwargs.get('pk')
+#     return Product.objects.get_by_id(pk)
 
 
 
@@ -66,12 +72,12 @@ class ProductSlugDetailView(DetailView):
 
 
 
-class ProductFeaturedDetailView(DetailView):
-  template_name = 'products/detail.html'
-  queryset = Product.objects.all()
+# class ProductFeaturedDetailView(DetailView):
+#   template_name = 'products/detail.html'
+#   queryset = Product.objects.all()
 
-  def get_queryset(self, *args, **kwargs):
-    request = self.request
-    pk = self.kwargs.get('pk')
-    print('YO')
-    return Product.objects.active()
+#   def get_queryset(self, *args, **kwargs):
+#     request = self.request
+#     pk = self.kwargs.get('pk')
+#     print('YO')
+#     return Product.objects.active()
