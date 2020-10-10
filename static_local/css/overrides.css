@@ -47,6 +47,23 @@
   margin: 5px!important;
 }
 
+.remove-button {
+  background: #00cb96;
+    background: -moz-linear-gradient(top, #00cb96 0%, #00be8e 100%);
+    background: -webkit-linear-gradient(top, #00cb96 0%, #00be8e 100%);
+    background: linear-gradient(to bottom, #00cb96 0%, #00be8e 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00cb96', endColorstr='#00be8e', GradientType=0);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    border: 1px solid #01b888;
+    padding: 4px;
+    display: block;
+    margin-top: 18px;
+    border-radius: 3px;
+    text-align: center;
+}
+
 
 /* ---------------------------------------------
                     BUTTONS

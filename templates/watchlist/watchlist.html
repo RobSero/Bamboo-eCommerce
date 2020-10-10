@@ -34,7 +34,7 @@
                     <td>
                       <form method="GET" action="{% url 'watchlist' product_id=product.id %}" id='watch-form' onsubmit="return watchlistUpdate(event)">
                         <input name="product_id" value='{{ product.id }}' type="hidden" />
-                      <button type="submit" id='remove-button'>Remove</button></td>
+                      <button class="remove-button" type="submit" id='remove-button'>Remove</button></td>
                     </form>
                   </tr>
                   {% endfor %}
