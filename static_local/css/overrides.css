@@ -39,6 +39,14 @@
   text-align: center;
 }
 
+.padded {
+  padding: 15px!important;
+}
+
+.margin-5 {
+  margin: 5px!important;
+}
+
 
 /* ---------------------------------------------
                     BUTTONS
@@ -47,6 +55,10 @@
 .watching {
   background-color: #1f95ff!important;
   color: white!important;
+}
+
+.inline-icon {
+  display: inline!important;
 }
 
 
