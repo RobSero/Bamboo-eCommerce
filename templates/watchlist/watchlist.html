@@ -26,12 +26,16 @@
                 </thead>
                 <tbody>
                   {% for product in watchlist.products.all %}
-                  <tr>
+                  <tr id="item-{{ product.id }}">
                     <th>{{ forloop.counter }}</th>
                     <td><a href="{{ product.get_absolute_url }}"><img class="product-thumbnail" src="{{ product.image.url }}" /></a></td>
                     <td><a href="{{ product.get_absolute_url }}">{{ product.title }}</a></td>
                     <td>{{ product.price }}</td>
-                    <td><button id='remove-button'><a href="{{ product.id }}">Remove</a></button></td>
+                    <td>
+                      <form method="GET" action="{% url 'watchlist' product_id=product.id %}" id='watch-form' onsubmit="return watchlistUpdate(event)">
+                        <input name="product_id" value='{{ product.id }}' type="hidden" />
+                      <button type="submit" id='remove-button'>Remove</button></td>
+                    </form>
                   </tr>
                   {% endfor %}
                
@@ -63,6 +67,6 @@
 </div>
 
 
-
+<script src='{% static "js/watchlist-ajax.js" %}'></script>
 
 {% endblock %}

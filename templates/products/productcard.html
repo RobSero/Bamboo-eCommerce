@@ -19,12 +19,17 @@
       <a href='{{ instance.get_absolute_url }}' tabindex="0">£{{ instance.price }}</a>
     </div>
     <div class="prod-btn">
+      <form method="GET" action="{% url 'watchlist' product_id=instance.id %}" id='watch-form' onsubmit="return watchToggle(event)">
+        <input name="product_id" value='{{ instance.id }}' type="hidden" />
+        <span id="watch-buttons{{instance.id}}">
       {% if instance in watchlist.products.all %}
-      <a href="{% url 'watchlist' product_id=instance.id %}" class="watching"><i class="fa fa-star" aria-hidden="true"></i> Remove wishlist</a>
+      <button type="submit"  class="watching" ><i class="fa fa-star" aria-hidden="true"></i> Remove wishlist</button>
       {% else %}
-      <a href="{% url 'watchlist' product_id=instance.id %}"><i class="fa fa-star" aria-hidden="true"></i> Save to wishlist</a>
+      <button type="submit"><i class="fa fa-star" aria-hidden="true"></i> Save to wishlist</button>
       {% endif %}
+    </span>
       <p>New</p>
+    </form>
     </div>
   </div>
 </div>

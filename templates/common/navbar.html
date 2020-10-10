@@ -39,7 +39,7 @@
                        <ul>
                           <li> <a href="{% url 'about' %}"> About </a> </li>
                           <li> <a href="{% url 'carthome' %}"><img class="cart-icon" src="{% static 'img/cartIcon.png' %}" alt="" /> {{request.session.cart_items}} </a></li>
-                          <li> <a href="{% url 'watching' %}"><img class="cart-icon" src="{% static 'img/heartIcon.png' %}" alt="" /> {{request.session.watchlist_items}} </a></li>
+                          <li> <a href="{% url 'watching' %}"><img class="cart-icon" src="{% static 'img/heartIcon.png' %}" alt="" /><span id='watchlist-count'>{{request.session.watchlist_items}} </span> </a></li>
                        </ul>
                     </div>
                  </div>
@@ -58,26 +58,6 @@
      <!--/.container-fluid --> 
   </nav>
 </header>
-
-
- <!-- Modal -->
- <div class="modal fade lug" id="myModal" role="dialog">
-  <div class="modal-dialog">
-     <!-- Modal content-->
-     <div class="modal-content">
-        <div class="modal-header">
-           <button type="button" class="close" data-dismiss="modal">&times;</button>
-           <h4 class="modal-title">Change</h4>
-        </div>
-        <div class="modal-body">
-           <ul>
-              <li><a href="#"><img src="images/flag-up-1.png" alt="" /> United States</a></li>
-              <li><a href="#"><img src="images/flag-up-2.png" alt="" /> France </a></li>
-           </ul>
-        </div>
-     </div>
-  </div>
-</div>
 
 <!-- Mobile Side Navbar  -->
 <div id="sidebar" class="top-nav">
