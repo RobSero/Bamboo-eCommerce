@@ -7,7 +7,7 @@ verify_ssl = true
 
 [packages]
 django-heroku = "*"
-environ = "*"
+django-environ = "*"
 psycopg2 = "*"
 
 [requires]
