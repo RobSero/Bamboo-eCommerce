@@ -1,4 +1,5 @@
 import os
+import django_heroku
 import environ
 env = environ.Env(
     # set casting, default value
@@ -77,9 +78,11 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+     'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'bamboo',
+        'HOST': 'localhost',
+        'PORT': 5432
     }
 }
 
@@ -131,3 +134,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static_main", 'static_root')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "static_main", 'media_root')
 
+django_heroku.settings(locals())
