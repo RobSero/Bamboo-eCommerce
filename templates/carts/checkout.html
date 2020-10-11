@@ -5,11 +5,11 @@
 <div class="product-page-main">
   <div class="container">
     <div class="cart-title">
-      <h1>Checkout</h1>
+      <h1>Checkout - Delivery Address</h1>
     </div>
     <div class="row cart-table">
 
-      {% if not billing_profile %}
+      {% if not request.user.is_authenticated %}
       <div class="col-md-9 col-sm-8">
         <div class="checkout-form-container">
         <form method="POST" action="{% url 'login' %}" class="get-form"> {%csrf_token %}
@@ -25,7 +25,19 @@
 
       {% else %}
       <div class="col-md-9 col-sm-8">
-        <p style="text-align:center; margin-top: 50px">No items in cart</p>
+        {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}-message"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+        <form method="POST" action="{% url 'setaddress' %}" class="get-form"> {%csrf_token %}
+        {{ address_form }}
+        <br />
+        <div style='text-align:center; margin-top:10px'>
+        <button class="btn btn-primary" type='submit' style='position:relative'>Save</button>
+      </div>
       </div>
       {% endif %}
 
@@ -45,7 +57,11 @@
             <h5 class="flex-totals-item">Total:</h5>
             <h5 class="flex-totals-item">£{{ object.total }}</h5>
           </div>
+          {% if not request.user.is_authenticated %}
+          <a href="#">Login to pay</a>
+          {% else %}
           <a href="#">Checkout</a>
+          {% endif %}
           </form>
         </div>
       </div>

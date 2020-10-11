@@ -19,13 +19,17 @@
       <a href='{{ instance.get_absolute_url }}' tabindex="0">£{{ instance.price }}</a>
     </div>
     <div class="prod-btn">
+      {% if not request.user.is_authenticated %}
+      <a href='{% url "login" %}' type="submit"><i class="fa fa-star" aria-hidden="true"></i> Save to wishlist</a>
+      {% else %}
       <form method="GET" action="{% url 'watchlist' product_id=instance.id %}" id='watch-form' onsubmit="return watchToggle(event)">
         <input name="product_id" value='{{ instance.id }}' type="hidden" />
         <span id="watch-buttons{{instance.id}}">
       {% if instance in watchlist.products.all %}
-      <button type="submit"  class="watching" ><i class="fa fa-star" aria-hidden="true"></i> Remove wishlist</button>
+      <button type="submit"  class="watching" ><img class="like-icon" src="https://res.cloudinary.com/dy7eycl8m/image/upload/v1602405836/likethumbWhite_zwq7fm.png" /> Remove wishlist</button>
       {% else %}
-      <button type="submit"><i class="fa fa-star" aria-hidden="true"></i> Save to wishlist</button>
+      <button type="submit" class="no-watch"><img class="like-icon" src="https://res.cloudinary.com/dy7eycl8m/image/upload/v1602405638/likethumb_setair.png" /> Save to wishlist</button>
+      {% endif %}
       {% endif %}
     </span>
       <p>New</p>

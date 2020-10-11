@@ -13,8 +13,8 @@ function watchToggle(e){
   }).then(data => {
     console.log(data)
     const buttonOptions = document.getElementById(`watch-buttons${productId}`)
-    const watchButton = '<button type="submit"><i class="fa fa-star" aria-hidden="true"></i> Save to wishlist</button>'
-    const unwatchButton = '<button type="submit"  class="watching" ><i class="fa fa-star" aria-hidden="true"></i> Remove wishlist</button>'
+    const watchButton = '<button type="submit" class="no-watch"><img class="like-icon" src="https://res.cloudinary.com/dy7eycl8m/image/upload/v1602405638/likethumb_setair.png" /> Save to wishlist</button>'
+    const unwatchButton = '<button type="submit"  class="watching" ><img class="like-icon" src="https://res.cloudinary.com/dy7eycl8m/image/upload/v1602405836/likethumbWhite_zwq7fm.png" /> Remove wishlist</button>'
     if (data.added){
       buttonOptions.innerHTML = unwatchButton
     } else {

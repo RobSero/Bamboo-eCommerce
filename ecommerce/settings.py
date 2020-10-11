@@ -36,7 +36,8 @@ INSTALLED_APPS = [
     'order',
     'billing',
     'accounts',
-    'watchlist'
+    'watchlist',
+    'address'
 ]
 
 # change default user model to custom model

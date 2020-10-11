@@ -1,9 +1,13 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from .models import Cart
-from products.models import Product
-from order.models import Order
+
 from accounts.forms import LoginForm
+from address.forms import AddressForm
+from address.models import Address
 from billing.models import BillingProfile
+from order.models import Order
+from products.models import Product
 
 # Create your views here.
 def cart_home(req):
@@ -38,10 +42,24 @@ def checkout_home(req):
   if user.is_authenticated:
     billing_profile = BillingProfile.objects.get_or_create(user=user, email=user.email)
   login_form = LoginForm()
+  user_address, new_address = Address.objects.get_or_create(user=user)
+  address_form = AddressForm(instance=user_address)
   context = {
     'object' : order,
     'billing_profile' : billing_profile,
     'cart' : cart,
-    'login_form' : login_form
+    'login_form' : login_form,
+    'address_form' : address_form
   }
   return render(req, 'carts/checkout.html', context)
+
+
+def set_address(req):
+  user = req.user
+  address_obj = Address.objects.get(user=user)
+  address_form = AddressForm(req.POST, instance=address_obj)
+  if address_form.is_valid():
+    address_form.save()
+    messages.success(req, 'Profile details updated.')
+    
+  return redirect('checkout')

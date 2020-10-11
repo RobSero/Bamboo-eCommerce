@@ -50,7 +50,12 @@ class ProductSlugDetailView(DetailView):
       context = super(ProductSlugDetailView, self).get_context_data(**kwargs)
       request = self.request
       cart, new_cart = Cart.objects.new_cart_or_get(request)
+      if request.user.is_authenticated:
+        user_watchlist = Watchlist.objects.get(user=request.user.id)
+      else:
+        user_watchlist = None
       context['cart'] = cart
+      context['watchlist'] = user_watchlist
       return context
   
 

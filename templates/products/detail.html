@@ -65,25 +65,42 @@
                   {% if object.image %}
                   <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="{{ object.image.url }}"
                         alt="#" /></a></li>
-                   {% endif %} 
-                   {% if object.image1 %}
+                  {% endif %}
+                  {% if object.image1 %}
                   <li><a data-target="#pic-2" data-toggle="tab"><img src="{{ object.image1.url }}" alt="#" /></a></li>
-                  {% endif %} 
+                  {% endif %}
                   {% if object.image2 %}
                   <li><a data-target="#pic-3" data-toggle="tab"><img src="{{ object.image2.url }}" alt="#" /></a></li>
-                  {% endif %} 
+                  {% endif %}
                   {% if object.image3 %}
                   <li><a data-target="#pic-4" data-toggle="tab"><img src="{{ object.image3.url }}" alt="#" /></a></li>
-                  {% endif %} 
+                  {% endif %}
                 </ul>
               </div>
             </div>
             <div class="btn-dit-list clearfix">
               <div class="left-dit-p">
                 <div class="prod-btn">
-                  <a href="#"><i class="fa fa-star" aria-hidden="true"></i> Save to wishlist</a>
-                  <a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Like this</a>
-                  <p>23 likes</p>
+                  {% if not request.user.is_authenticated %}
+                  <a href='{% url "login" %}' type="submit"><i class="fa fa-star" aria-hidden="true"></i> Save to
+                    wishlist</a>
+                  {% else %}
+                  <form method="GET" action="{% url 'watchlist' product_id=object.id %}" id='watch-form'
+                    onsubmit="return watchToggle(event)">
+                    <input name="product_id" value='{{ object.id }}' type="hidden" />
+                    <span id="watch-buttons{{object.id}}">
+                      {% if object in watchlist.products.all %}
+                      <button type="submit" class="watching"><img class="like-icon" src="https://res.cloudinary.com/dy7eycl8m/image/upload/v1602405836/likethumbWhite_zwq7fm.png" /> Remove
+                        wishlist</button>
+                      {% else %}
+                      <button type="submit" class="no-watch"><img class="like-icon" src="https://res.cloudinary.com/dy7eycl8m/image/upload/v1602405638/likethumb_setair.png" /> Save to
+                        wishlist</button>
+                      {% endif %}
+                      {% endif %}
+                    </span>
+
+                  </form>
+                  <p>Keep a watch on constant special offers, {{object.material}} grows best in Summer, so look for details then</p>
                 </div>
               </div>
 
@@ -165,16 +182,9 @@
         <div class="price-box-right">
           <h4>Price</h4>
           <h3>£{{ object.price }} <span>each</span></h3>
-          <p>Quantity</p>
-          <select class="form-control select2">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
+          <p>Brand New</p>
           {% if object in cart.products.all %}
-          <a href="#">In Cart</a>
+          {% include 'carts/snippets/removeform.html' with object=object %}
           {% else %}
           <form method="POST" action="{% url 'cartupdate' %}"> {% csrf_token %}
             <input type="hidden" name='product_id' value='{{ object.id }}' />
@@ -182,12 +192,12 @@
           </form>
           {% endif %}
 
-          <h5><i class="fa fa-clock-o" aria-hidden="true"></i> <strong>16 hours</strong> avg. responsive time</h5>
+          <h5><i class="fa fa-clock-o" aria-hidden="true"></i> <strong>16 hours</strong> avg. dispatch time</h5>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-
+<script src='{% static "js/list-ajax.js" %}'></script>
 {% endblock %}

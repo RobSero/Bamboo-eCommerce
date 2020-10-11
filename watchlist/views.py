@@ -8,9 +8,6 @@ from products.models import Product
 
 def update_watchlist(req, product_id):
   
-  # check if user is signed in, send to login if not
-  if not req.user.is_authenticated:
-    return redirect('login')
   # get_or_create Watchlist by user
   watchlist_obj,new_watchlist = Watchlist.objects.get_or_create(user=req.user)
   # get Product

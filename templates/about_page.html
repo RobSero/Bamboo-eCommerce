@@ -59,10 +59,12 @@
            <div class="col-lg-8 col-lg-offset-2">
               <div class="blue-form">
                  <h2>Start a free account today</h2>
-                 <form class="form-inline">
-                    <input type="email" placeholder="Enter your e-mail" />
-                    <button type="submit" class="btn btn-primary">Continue</button>
+                 <div class="form-box">
+                  <form method="POST" action="{% url 'register' %}">{% csrf_token %}
+                   <input name='email' type="text" placeholder="Enter your e-mail" />
+                   <button type="submit">Continue</button>
                  </form>
+                </div>
                  <p>Easy setup - no payment fees - up to 100 products for free</p>
                  <div class="blue-form_question"><strong>Questions?</strong> Call us on 12 34 56 78 for help.</div>
               </div>
@@ -83,8 +85,7 @@
            </div>
            <div class="col-lg-8 col-lg-offset-2">
               <h2>The ball is now yours.</h2>
-              <p>Over the coming years, the way that business through the web works will change at a great level - and Chamb is the gamebreaker. Customers will expect options of where and how to buy: in-store or online, delivered or for pick-up. It’s an incredibly exciting time for this industry, and we’re going to be right at the centre of it.</p>
-              <p>So what are you waiting for? Sign up and create oppurtinities for your business.</p>
+              <p>Easy ordering with all the great info on the different bamboos, excellent communication on the delivery, great after sales help with quick answers to questions, helpful email reminders for care and watering.</p>
            </div>
      
         </div>

@@ -3198,6 +3198,7 @@ html .ui-button.ui-state-disabled:active {
   padding-right: 11px;
   padding-bottom: 10px;
   background: #fff;
+  margin-bottom: 30px;
 }
 
 .description-box h4 {
