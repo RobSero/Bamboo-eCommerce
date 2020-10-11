@@ -8,6 +8,7 @@ verify_ssl = true
 [packages]
 django-heroku = "*"
 psycopg2 = "*"
+django-dotenv = "*"
 
 [requires]
 python_version = "3.8"
