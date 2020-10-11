@@ -9,6 +9,7 @@ verify_ssl = true
 django-heroku = "*"
 psycopg2 = "*"
 django-dotenv = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.8"
