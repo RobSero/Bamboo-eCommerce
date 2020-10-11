@@ -1,5 +1,20 @@
+body {
+  min-height: 110vh;
+}
+
+
 .form-style-override {
   margin: 10px 5px;
+}
+
+.address-form {
+  width: 70%;
+ 
+}
+
+.success-message {
+  background-color: #8dddc8!important;
+  text-align: center;
 }
 
 .product-thumbnail {

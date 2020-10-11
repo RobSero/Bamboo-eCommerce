@@ -32,7 +32,7 @@
     {% endfor %}
 </ul>
 {% endif %}
-        <form method="POST" action="{% url 'setaddress' %}" class="get-form"> {%csrf_token %}
+        <form method="POST" action="{% url 'setaddress' %}" class="get-form address-form"> {%csrf_token %}
         {{ address_form }}
         <br />
         <div style='text-align:center; margin-top:10px'>

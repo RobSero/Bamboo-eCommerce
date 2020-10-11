@@ -9,7 +9,7 @@ User = get_user_model()
 def ProductListView(req):
   all_products = Product.objects.all()
   if req.user.is_authenticated:
-    user_watchlist = Watchlist.objects.get_or_create(user=req.user.id)
+    user_watchlist = Watchlist.objects.get(user=req.user.id)
   else:
     user_watchlist = None
   context = {

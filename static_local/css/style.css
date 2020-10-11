@@ -3043,6 +3043,7 @@ html .ui-button.ui-state-disabled:active {
 
 .product-page-main {
   background: #f4f9fd;
+  min-height: 70vh;
 }
 
 .prod-page-title {

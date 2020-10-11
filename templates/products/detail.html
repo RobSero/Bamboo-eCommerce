@@ -192,7 +192,7 @@
           {% else %}
           <form method="POST" action="{% url 'cartupdate' %}"> {% csrf_token %}
             <input type="hidden" name='product_id' value='{{ object.id }}' />
-            <button type="submit" id='buy-button'>Add to Basket</button type="submit">
+            <button  type="submit" id='buy-button'>Add to Basket</button type="submit">
           </form>
           {% endif %}
 

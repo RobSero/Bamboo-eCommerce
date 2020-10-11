@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import LoginForm, RegisterForm
 from django.contrib.auth import authenticate, login, get_user_model
 from django.utils.http import is_safe_url
-
+from carts.models import Cart
 
 #  --------------- LOGIN FORM --------------------
 
@@ -20,7 +20,10 @@ def login_page(req):
     user = authenticate(req, username=username, password=password)
     if user is not None:
       # success - login user and redirect
+      
       login(req,user)
+      user_cart, new_cart = Cart.objects.new_cart_or_get(req)
+      req.session['cart_items'] = user_cart.products.count() 
       if is_safe_url(redirect_path,req.get_host()):
         return redirect(redirect_path)
       else:
