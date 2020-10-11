@@ -36,7 +36,8 @@
         {{ address_form }}
         <br />
         <div style='text-align:center; margin-top:10px'>
-        <button class="btn btn-primary" type='submit' style='position:relative'>Save</button>
+        <button class="btn btn-primary" type='submit' style='position:relative; margin: 0 auto' id="remove-button">Save</button>
+        </form>
       </div>
       </div>
       {% endif %}
@@ -58,18 +59,38 @@
             <h5 class="flex-totals-item">£{{ object.total }}</h5>
           </div>
           {% if not request.user.is_authenticated %}
-          <a href="#">Login to pay</a>
+          <p >Login to pay</p>
           {% else %}
-          <a href="#">Checkout</a>
+          <button class="generic-button" data-toggle="modal" data-target="#exampleModal">Make Payment</button>
           {% endif %}
-          </form>
+       
         </div>
       </div>
     </div>
   </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Sorry! We are completely out of Stock!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Due to the unforeseen events of COVID19, we are currently suspending all bamboo transportation into the UK until we can confirm the utmost qualityof our products and safety of our staff and suppliers. Please check back in at  alater date to make payment.</p>
+        <p>Thank you for your patience at this current time</p>
 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 {% endblock %}

@@ -5,7 +5,6 @@ from .models import Cart
 from accounts.forms import LoginForm
 from address.forms import AddressForm
 from address.models import Address
-from billing.models import BillingProfile
 from order.models import Order
 from products.models import Product
 
@@ -38,15 +37,11 @@ def checkout_home(req):
     return redirect('carthome')
   order, new_order = Order.objects.get_or_create(cart=cart)
   user = req.user
-  billing_profile = None
-  if user.is_authenticated:
-    billing_profile = BillingProfile.objects.get_or_create(user=user, email=user.email)
   login_form = LoginForm()
   user_address, new_address = Address.objects.get_or_create(user=user)
   address_form = AddressForm(instance=user_address)
   context = {
     'object' : order,
-    'billing_profile' : billing_profile,
     'cart' : cart,
     'login_form' : login_form,
     'address_form' : address_form

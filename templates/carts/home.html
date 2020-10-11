@@ -38,12 +38,14 @@
                     <td></td>
                     <td>Subtotal:</td>
                     <td>{{ cart.subtotal }}</td>
+                    <td></td>
                   </tr>
                   <tr>
                     <th></th>
                     <td></td>
                     <td>Total:</td>
                     <td>{{ cart.total }}</td>
+                    <td></td>
                   </tr>
                 </tbody>
               </table>
@@ -66,9 +68,16 @@
           <h5 class="flex-totals-item">Subtotal:</h5><h5 class="flex-totals-item">£{{ cart.subtotal }}</h5>
         </div>
         <div class="flex-totals">
+          <h5 class="flex-totals-item">VAT international Tax:</h5><h5 class="flex-totals-item">£10.00</h5>
+        </div>
+        <div class="flex-totals">
           <h5 class="flex-totals-item">Total:</h5><h5 class="flex-totals-item">£{{ cart.total }}</h5>
         </div>
+        {% if request.user.is_authenticated %}
             <a href="{% url 'checkout' %}">Checkout</a >
+        {% else %}
+            <a href="{% url 'login' %}">Checkout</a >
+              {% endif %}
           </form>
         </div>
       </div>

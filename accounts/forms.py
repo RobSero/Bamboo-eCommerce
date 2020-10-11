@@ -19,10 +19,6 @@ class LoginForm(forms.Form):
   
   
 class RegisterForm(forms.Form):
-  username = forms.CharField(widget=forms.TextInput(attrs={
-    'class': 'form-input form-style-override', 
-    'placeholder': 'Username'
-    }), label='')
   email = forms.EmailField(widget=forms.EmailInput(attrs={
     'class': 'form-input form-style-override', 
     'placeholder': 'Email',
@@ -37,14 +33,7 @@ class RegisterForm(forms.Form):
     }), label='')
   
   
-  def clean_username(self):
-    username = self.cleaned_data.get('username')
-    find_users = User.objects.filter(username=username)
-    if find_users.exists():
-      raise forms.ValidationError('username already exists')
-    return username
-  
-  
+
   def clean_email(self):
     email = self.cleaned_data.get('email')
     find_users = User.objects.filter(email=email)

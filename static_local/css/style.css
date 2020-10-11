@@ -3345,7 +3345,7 @@ html .ui-button.ui-state-disabled:active {
   text-align: center;
 }
 
-#buy-button {
+#buy-button, #remove-button {
   background: #00cb96;
   /* Old browsers */
   background: -moz-linear-gradient(top, #00cb96 0%, #00be8e 100%);
@@ -3362,7 +3362,6 @@ html .ui-button.ui-state-disabled:active {
   border: 1px solid #01b888;
   padding: 12px;
   display: block;
-  margin-top: 18px;
   border-radius: 3px;
   text-align: center;
 }

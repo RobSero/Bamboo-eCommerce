@@ -27,7 +27,7 @@
       <div class="col-md-12">
         <div class="prod-page-title">
           <h2>{{ object.title }} </h2>
-          <p>By <span>Robert Serowka</span></p>
+          <p>By <span>Ivy League Bamboo Ltd.</span></p>
         </div>
       </div>
     </div>
@@ -79,30 +79,7 @@
               </div>
             </div>
             <div class="btn-dit-list clearfix">
-              <div class="left-dit-p">
-                <div class="prod-btn">
-                  {% if not request.user.is_authenticated %}
-                  <a href='{% url "login" %}' type="submit"><i class="fa fa-star" aria-hidden="true"></i> Save to
-                    wishlist</a>
-                  {% else %}
-                  <form method="GET" action="{% url 'watchlist' product_id=object.id %}" id='watch-form'
-                    onsubmit="return watchToggle(event)">
-                    <input name="product_id" value='{{ object.id }}' type="hidden" />
-                    <span id="watch-buttons{{object.id}}">
-                      {% if object in watchlist.products.all %}
-                      <button type="submit" class="watching"><img class="like-icon" src="https://res.cloudinary.com/dy7eycl8m/image/upload/v1602405836/likethumbWhite_zwq7fm.png" /> Remove
-                        wishlist</button>
-                      {% else %}
-                      <button type="submit" class="no-watch"><img class="like-icon" src="https://res.cloudinary.com/dy7eycl8m/image/upload/v1602405638/likethumb_setair.png" /> Save to
-                        wishlist</button>
-                      {% endif %}
-                      {% endif %}
-                    </span>
-
-                  </form>
-                  <p>Keep a watch on constant special offers, {{object.material}} grows best in Summer, so look for details then</p>
-                </div>
-              </div>
+             
 
             </div>
           </div>
@@ -183,6 +160,33 @@
           <h4>Price</h4>
           <h3>£{{ object.price }} <span>each</span></h3>
           <p>Brand New</p>
+          <div class="left-dit-p">
+            <div class="prod-btn">
+              {% if not request.user.is_authenticated %}
+              <a href='{% url "login" %}' type="submit" class="no-watch"><img class="like-icon" src="https://res.cloudinary.com/dy7eycl8m/image/upload/v1602405638/likethumb_setair.png" /> Save to
+                wishlist</a>
+              {% else %}
+              <form method="GET" action="{% url 'watchlist' product_id=object.id %}" id='watch-form'
+                onsubmit="return watchToggle(event)">
+                <input name="product_id" value='{{ object.id }}' type="hidden" />
+                <span id="watch-buttons{{object.id}}">
+                  {% if object in watchlist.products.all %}
+                  <button type="submit" class="watching"><img class="like-icon" src="https://res.cloudinary.com/dy7eycl8m/image/upload/v1602405836/likethumbWhite_zwq7fm.png" /> Remove
+                    wishlist</button>
+                  {% else %}
+                  <button type="submit" class="no-watch"><img class="like-icon" src="https://res.cloudinary.com/dy7eycl8m/image/upload/v1602405638/likethumb_setair.png" /> Save to
+                    wishlist</button>
+                  {% endif %}
+                  {% endif %}
+                </span>
+
+              </form>
+              
+              <p>Keep a watch on constant special offers, {{object.material}} grows best in Summer, so look for details then</p>
+             
+            </div>
+          </div>
+    
           {% if object in cart.products.all %}
           {% include 'carts/snippets/removeform.html' with object=object %}
           {% else %}

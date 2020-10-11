@@ -9,7 +9,7 @@ User = get_user_model()
 def ProductListView(req):
   all_products = Product.objects.all()
   if req.user.is_authenticated:
-    user_watchlist = Watchlist.objects.get(user=req.user.id)
+    user_watchlist = Watchlist.objects.get_or_create(user=req.user.id)
   else:
     user_watchlist = None
   context = {
@@ -20,27 +20,6 @@ def ProductListView(req):
 
   
 
-# class ProductFeaturedListView(ListView):
-#   queryset = Product.objects.all()
-#   template_name = 'products/list.html'
-  
-#   def get_queryset(self, *args, **kwargs):
-#       print('HEEEDHEUD')
-#       request = self.request
-#       return Product.objects.feature()
-    
-
-
-# class ProductDetailView(DetailView):
-#   template_name = 'products/detail.html'
-#   queryset = Product.objects.all()
-
-#   def get_queryset(self, *args, **kwargs):
-#     request = self.request
-#     pk = self.kwargs.get('pk')
-#     return Product.objects.get_by_id(pk)
-
-
 
 class ProductSlugDetailView(DetailView):
   template_name = 'products/detail.html'
@@ -49,6 +28,7 @@ class ProductSlugDetailView(DetailView):
   def get_context_data(self, **kwargs):
       context = super(ProductSlugDetailView, self).get_context_data(**kwargs)
       request = self.request
+      print(request.user)
       cart, new_cart = Cart.objects.new_cart_or_get(request)
       if request.user.is_authenticated:
         user_watchlist = Watchlist.objects.get(user=request.user.id)
@@ -74,15 +54,3 @@ class ProductSlugDetailView(DetailView):
             raise Http404("Unknown error, please try again")
         return instance
 
-
-
-
-# class ProductFeaturedDetailView(DetailView):
-#   template_name = 'products/detail.html'
-#   queryset = Product.objects.all()
-
-#   def get_queryset(self, *args, **kwargs):
-#     request = self.request
-#     pk = self.kwargs.get('pk')
-#     print('YO')
-#     return Product.objects.active()
