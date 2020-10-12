@@ -1,5 +1,5 @@
 import os
-import django_heroku
+# import django_heroku
 # import dotenv
 # import environ
 # env = environ.Env(
@@ -10,14 +10,14 @@ import django_heroku
 # environ.Env.read_env()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
-# ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['.herokuapp.com']
+ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['.herokuapp.com']
 SECRET_KEY = '6-zp6=o@y!2of_vevx-w25)&^804z$gqwk8m%j1&3_#$6&vvhr'
 DEBUG = True
 # Application definition
@@ -126,7 +126,7 @@ USE_TZ = True
 
 
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static_local")
 ]
