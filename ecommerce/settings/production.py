@@ -18,6 +18,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 
 ALLOWED_HOSTS = ['*']
 # ALLOWED_HOSTS = ['.herokuapp.com']
+
+SECRET_KEY= os.environ.get('SECRET_KEY')
+DEBUG= os.environ.get('DEBUG')
 # Application definition
 
 INSTALLED_APPS = [
