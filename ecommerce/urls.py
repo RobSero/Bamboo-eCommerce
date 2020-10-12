@@ -13,7 +13,7 @@ urlpatterns = [
     path('account/', include('accounts.urls')),
     path('watchlist/', include('watchlist.urls')),
     path('', include('pages.urls')),
-    # re_path(r'^.*$', home_page)
+    re_path(r'^.*$', home_page)
 ]
 
 if settings.DEBUG:
