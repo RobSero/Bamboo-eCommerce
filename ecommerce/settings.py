@@ -17,7 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.herokuapp.com']
 SECRET_KEY = '6-zp6=o@y!2of_vevx-w25)&^804z$gqwk8m%j1&3_#$6&vvhr'
 DEBUG = True
 # Application definition
