@@ -1,1 +1,1 @@
-web: gunicorn ecommerce.wsgi
+python manage.py runserver 0.0.0.0:5834 --noreload
