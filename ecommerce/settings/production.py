@@ -1,5 +1,5 @@
 import os
-# import django_heroku
+import django_heroku
 # import dotenv
 # import environ
 # env = environ.Env(
@@ -127,7 +127,7 @@ USE_TZ = True
 
 
 
-# django_heroku.settings(locals())
+django_heroku.settings(locals())
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static_local")
 ]
