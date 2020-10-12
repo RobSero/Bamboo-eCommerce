@@ -1,5 +1,5 @@
 import os
-import django_heroku
+# import django_heroku
 # import dotenv
 # import environ
 # env = environ.Env(
@@ -16,8 +16,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
-
-ALLOWED_HOSTS = ['.herokuapp.com']
+ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['.herokuapp.com']
 SECRET_KEY = '6-zp6=o@y!2of_vevx-w25)&^804z$gqwk8m%j1&3_#$6&vvhr'
 DEBUG = True
 # Application definition
@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages',
     'pages',
     'products',
     'search',
@@ -125,13 +126,18 @@ USE_TZ = True
 
 
 
+# django_heroku.settings(locals())
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static_local")
 ]
-STATIC_URL = '/static/'
+
+
 STATIC_ROOT = os.path.join(BASE_DIR, "static_main", 'static_root')
 
-MEDIA_URL = '/media/'
+
 MEDIA_ROOT = os.path.join(BASE_DIR, "static_main", 'media_root')
 
-django_heroku.settings(locals())
+
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+from ecommerce.aws.conf import *
