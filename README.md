@@ -3,6 +3,13 @@
 ![database diagram](https://bamboostatic.s3.eu-west-2.amazonaws.com/static/img/homepage.png)
  
 *Deployed Site:* https://bamboobits.herokuapp.com/
+
+## Installation and Usage
+
+- Clone or download the repo
+- Within your virtual environment, ```run pip install -r requirements.txt```
+- Run your Django server with ```python manage.py runserver```
+
  
 ## Brief: Ongoing Live eCommerce Site
 Myself and a colleague wanted to create our own eCommerce platform which focused on promoting sustainability where I would build the site whilst they would focus on sourcing reliable products from suppliers. At the current stage, the site is live however the actual products have not been sourced yet and so features such as Stripe payment integration along with mailchimp emailing have been postponed until we can secure these.
