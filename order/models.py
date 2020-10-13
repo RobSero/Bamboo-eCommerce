@@ -26,7 +26,7 @@ class Order(models.Model):
     return self.order_id
   
   def update_total(self):
-    self.total = float(self.cart.total) + float(self.shipping_total)
+    self.total = round(float(self.cart.total) + float(self.shipping_total),2)
     self.save()
     return self.total
   
