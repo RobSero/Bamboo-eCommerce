@@ -1947,6 +1947,7 @@ header .navbar-default .navbar-header {
   background-color: #09284b;
   background-image: linear-gradient(to bottom, #010f1f 0, #051b34 100%);
   position: relative;
+  min-height: 75vh!important;
 }
 
 .soon-gradient .map {
