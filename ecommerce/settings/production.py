@@ -127,7 +127,7 @@ USE_TZ = True
 
 
 
-django_heroku.settings(locals())
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static_local")
 ]
@@ -153,3 +153,5 @@ CSRF_COOKIE_SECURE              = True
 SECURE_HSTS_INCLUDE_SUBDOMAINS  = True
 SECURE_HSTS_SECONDS             = 1000000
 SECURE_FRAME_DENY               = True
+
+django_heroku.settings(locals())

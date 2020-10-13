@@ -1,1 +1,1 @@
-python manage.py runserver 0.0.0.0:5834 --noreload
+web: python manage.py runserver 0.0.0.0:$PORT --noreload
