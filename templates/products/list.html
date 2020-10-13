@@ -52,14 +52,17 @@
               </ul>
               <ul class="nav nav-tabs pull-right right-t">
                 <li class="dropdown">
+                  
                   <form method="GET" action="{% url 'search' %}" class="navbar-form navbar-left web-sh">
-                    <select name='q' onchange="this.form.submit()" value='req.GET.q'>
+                    <select class="btn" name='q' onchange="this.form.submit()" value='req.GET.q'>
                       <option selected disabled>Filter</option>
                       <option value="">All</option>
                       <option value="clothes">Clothes</option>
                       <option value="furniture">Furniture</option>
                       <option value="random">Random!</option>
+                   
                     </select>
+                 
                 </form>
                  
                 </li>
