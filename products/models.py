@@ -5,6 +5,7 @@ import os
 from django.urls import reverse
 
 
+# creates a random image name so it does not conflict with other image names uploaded
 def upload_image_path(instance, filename):
   new_filename = random.randint(1,200000)
   base_name = os.path.basename(filename)
@@ -33,7 +34,7 @@ class ProductManager(models.Manager):
   def active(self):
     return self.get_queryset().active()
   
-  def feature(self):  # allows for the use of Product.objects.feature()
+  def feature(self):  # allows for the use of Product.objects.feature(), returns featured items
     return self.get_queryset().featured()
   
   def search(self, query): # allows for search method, find a match within title, description, tag, material

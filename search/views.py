@@ -1,7 +1,8 @@
+from django.db.models import Q
 from django.shortcuts import render
 from django.views.generic import ListView
 from products.models import Product
-from django.db.models import Q
+
 
 class SearchProductView(ListView):
   queryset = Product.objects.all()
