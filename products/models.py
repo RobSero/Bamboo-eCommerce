@@ -36,8 +36,8 @@ class ProductManager(models.Manager):
   def feature(self):  # allows for the use of Product.objects.feature()
     return self.get_queryset().featured()
   
-  def search(self, query):
-    lookup = Q(title__icontains=query) | Q(description__icontains=query) | Q(tag__title__icontains=query) | Q(material__icontains=query) | Q(description__icontains=query) 
+  def search(self, query): # allows for search method, find a match within title, description, tag, material
+    lookup = Q(title__icontains=query) | Q(description__icontains=query) | Q(tag__title__icontains=query) | Q(material__icontains=query)
     return self.get_queryset().filter(lookup).active().distinct() # distinct stops the same item being shown twice if it matches both Q statements
 
 

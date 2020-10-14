@@ -6,6 +6,9 @@ from watchlist.models import Watchlist
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
+
+
+#  ------------- PRODUCTS PAGE ---------------------
 def ProductListView(req):
   all_products = Product.objects.all()
   if req.user.is_authenticated:
@@ -20,11 +23,12 @@ def ProductListView(req):
 
   
 
-
+#  ------------- SINGLE PRODUCT PAGE PAGE ---------------------
 class ProductSlugDetailView(DetailView):
   template_name = 'products/detail.html'
   queryset = Product.objects.all()
   
+  # context data
   def get_context_data(self, **kwargs):
       context = super(ProductSlugDetailView, self).get_context_data(**kwargs)
       request = self.request
@@ -38,7 +42,7 @@ class ProductSlugDetailView(DetailView):
       context['watchlist'] = user_watchlist
       return context
   
-
+# object data
   def get_object(self, *args, **kwargs):
         request = self.request
         slug = self.kwargs.get('slug')

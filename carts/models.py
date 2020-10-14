@@ -29,12 +29,13 @@ class CartManager(models.Manager):
             request.session['cart_id'] = cart_obj.id
             return cart_obj, new_obj
           
-        # new cart created
+        # if there is no cart in session
         cart_obj = Cart.objects.new(user=request.user)
         new_obj = True
         request.session['cart_id'] = cart_obj.id    
         return cart_obj, new_obj
 
+#  Create cart (assign to )
     def new(self, user=None):
         user_obj = None
         if user is not None:
@@ -59,7 +60,7 @@ class Cart(models.Model):
 
 
 
-# check manyToMany Changes and update cart total
+# check for product manyToMany Changes and update cart total
 def m2m_cart_reciever(sender, instance, action, *args, **kwargs):
   if action == 'post_add' or action == 'post_remove' or action == 'post_clear':
     total = 0
@@ -70,7 +71,7 @@ def m2m_cart_reciever(sender, instance, action, *args, **kwargs):
   instance.save()
 m2m_changed.connect(m2m_cart_reciever, sender=Cart.products.through)
 
-# update total when presave
+# update total when cart presave
 def pre_save_cart(sender, instance, *args, **kwargs):
   if instance.subtotal > 0:
     instance.total = instance.subtotal + 10

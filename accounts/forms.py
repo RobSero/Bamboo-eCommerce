@@ -34,7 +34,7 @@ class RegisterForm(forms.Form):
   
   
 
-  def clean_email(self):
+  def clean_email(self):  #convert form email into valid python type and search for existing users
     email = self.cleaned_data.get('email')
     find_users = User.objects.filter(email=email)
     if find_users.exists():
@@ -42,7 +42,7 @@ class RegisterForm(forms.Form):
     return email
     
     
-  def clean(self):
+  def clean(self): # clean up form data into valid python types
     data = self.cleaned_data
     password = self.cleaned_data.get('password')
     password2 = self.cleaned_data.get('password2')

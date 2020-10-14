@@ -14,7 +14,6 @@ CHOOSE_ORDER_STATUS = [
 
 class Order(models.Model):
   order_id = models.CharField(max_length=20, blank=True)
-  # billing_profile = 
   # shipping_address = 
   # billing_address = 
   cart = models.ForeignKey(Cart, on_delete=models.PROTECT)
@@ -32,7 +31,7 @@ class Order(models.Model):
   
   
   
-  
+  # PRIOR TO ORDER BEING SAVED, A RANDOM ID IS GENERATED FOR IT - ONLY RUNS WHEN ORDER IS CRATED AND HAS NO ID
 def pre_save_order_id_generator(sender,instance, *args, **kwargs):
   if not instance.order_id:
     instance.order_id = ''.join(random.choices(string.ascii_uppercase + string.digits,k=20))
