@@ -1,7 +1,7 @@
-from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import Cart
+from django.shortcuts import render, redirect
 
+from .models import Cart
 from accounts.forms import LoginForm
 from address.forms import AddressForm
 from address.models import Address

@@ -4,6 +4,7 @@ from django.utils.http import is_safe_url
 
 from .forms import LoginForm, RegisterForm
 from carts.models import Cart
+from watchlist.models import Watchlist
 
 #  --------------- LOGIN FORM --------------------
 
@@ -23,7 +24,10 @@ def login_page(req):
       # success - login user and redirect
       
       login(req,user)
+      # get or create the user's cart / watchlist
       user_cart, new_cart = Cart.objects.new_cart_or_get(req)
+      watchlist_obj,new_watchlist = Watchlist.objects.get_or_create(user=req.user)
+      req.session['watchlist_items'] = watchlist_obj.products.count()
       req.session['cart_items'] = user_cart.products.count() 
       if is_safe_url(redirect_path,req.get_host()):
         return redirect(redirect_path)
