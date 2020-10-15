@@ -12,6 +12,7 @@ urlpatterns = [
     path('cart/', include('carts.urls')),
     path('account/', include('accounts.urls')),
     path('watchlist/', include('watchlist.urls')),
+    path('payments/', include('payments.urls')),
     path('', include('pages.urls')),
     re_path(r'^.*$', home_page)
 ]
