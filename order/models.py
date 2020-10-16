@@ -1,9 +1,12 @@
 from django.db import models
 from django.db.models.signals import pre_save, post_save
 
+from address.models import Address
 from carts.models import Cart
 import random
 import string
+
+User = settings.AUTH_USER_MODEL
 
 CHOOSE_ORDER_STATUS = [
   ('created', 'Created'),
@@ -15,8 +18,8 @@ CHOOSE_ORDER_STATUS = [
 
 class Order(models.Model):
   order_id = models.CharField(max_length=20, blank=True)
-  # shipping_address = 
-  # billing_address = 
+  billing_address = models.OneToOneField(Address, on_delete=models.PROTECT)
+  user = models.OneToOneField(User, on_delete=models.CASCADE)
   cart = models.ForeignKey(Cart, on_delete=models.PROTECT)
   status = models.CharField(max_length=100, default='created', choices=CHOOSE_ORDER_STATUS)
   shipping_total = models.DecimalField(default=3.99, max_digits=10, decimal_places=2)
