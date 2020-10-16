@@ -23,6 +23,10 @@ class RegisterForm(forms.Form):
     'class': 'form-input form-style-override', 
     'placeholder': 'Email',
     }), label='')
+  full_name = forms.CharField(widget=forms.TextInput(attrs={
+    'class': 'form-input form-style-override', 
+    'placeholder': 'Full Name',
+    }), label='')
   password = forms.CharField(widget=forms.PasswordInput(attrs={
     'class': 'form-input form-style-override', 
     'placeholder': "Password",
