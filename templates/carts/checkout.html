@@ -61,7 +61,7 @@
           {% if not request.user.is_authenticated %}
           <p >Login to pay</p>
           {% else %}
-          <button class="generic-button" data-toggle="modal" data-target="#exampleModal">Make Payment</button>
+          <a href="{% url 'payment' %}" class="generic-button">Make Payment</a>
           {% endif %}
        
         </div>

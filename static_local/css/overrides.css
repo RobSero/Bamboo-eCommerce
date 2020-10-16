@@ -7,9 +7,13 @@ body {
   margin: 10px 5px;
 }
 
-.address-form {
+.address-form, .payment-form {
+  margin: 0 auto;
   width: 70%;
- 
+}
+
+.payment-warning {
+  color: rgb(202, 29, 29);
 }
 
 .success-message {

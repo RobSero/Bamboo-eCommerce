@@ -11,6 +11,10 @@
 
    
       <div class="col-md-9 col-sm-8">
+        <p>Our services use Stripe as our payment processing service</p>
+        <h3 class="payment-warning">NOTE: DO NOT USE REAL PAYMENT DETAILS, THIS IS NOT A REAL FUNCTIONING SITE AT THIS STAGE</h3>
+        <br />
+        <div class="payment-form">
         <form action="{% url 'charge' %}" method="post" id="payment-form">  {% csrf_token %}
           <div class="form-row">
             <label for="card-element">
@@ -23,9 +27,10 @@
             <!-- Used to display form errors. -->
             <div id="card-errors" role="alert"></div>
           </div>
-        
-          <button>Submit Payment</button>
+        <br />
+          <button class="generic-button" >Submit Payment</button>
         </form>
+      </div>
       </div>
 
 
@@ -45,12 +50,6 @@
             <h5 class="flex-totals-item">Total:</h5>
             <h5 class="flex-totals-item">£{{ object.total }}</h5>
           </div>
-          {% if not request.user.is_authenticated %}
-          <p >Login to pay</p>
-          {% else %}
-          <button class="generic-button" data-toggle="modal" data-target="#exampleModal">Make Payment</button>
-          {% endif %}
-       
         </div>
       </div>
     </div>
